@@ -8,8 +8,7 @@ public class ExecureScript extends Command {
     }
 
     @Override
-    public void execute(String[] args) {
-        // TODO Auto-generated method stub
+    public void execute(String[] args) { // TODO :omg
         throw new UnsupportedOperationException("Unimplemented method 'execute' in ExecuteScript");
     }
 

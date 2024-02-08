@@ -4,7 +4,11 @@ public class Save extends Command {
 
     public Save() {
         super("save", "save collection to file");
-        //TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void execute() { // TODO
+        System.out.println("Collection saved to file.");
     }
 
 }

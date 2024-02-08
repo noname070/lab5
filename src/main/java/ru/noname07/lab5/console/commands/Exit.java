@@ -8,6 +8,7 @@ public class Exit extends Command {
 
     @Override
     public void execute() {
+        System.out.println("bb +250");
         System.exit(0);
     }
     

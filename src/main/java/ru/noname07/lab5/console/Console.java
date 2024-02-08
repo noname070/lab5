@@ -43,7 +43,7 @@ public class Console {
         String commandLine = scanner.nextLine();
         String input[] = commandLine.split(" ");
 
-        try {
+        try { // TODO args to commands
             if (input.length == 1) {
                 commandList.get(input[0]).execute();
             } else if (input.length == 2) {

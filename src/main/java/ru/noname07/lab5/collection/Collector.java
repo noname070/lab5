@@ -8,10 +8,10 @@ import ru.noname07.lab5.collection.data.Organization;
 
 public class Collector {
 
-    private LinkedList<Organization> data = new LinkedList<Organization>();
+    private LinkedList<Organization> data;
 
-    public Collector() {
-        // TODO read and deserialize from xml
+    public Collector(LinkedList<Organization> data) {
+        this.data = data;
     }
 
     public void addElement(Organization element) {
@@ -75,11 +75,6 @@ public class Collector {
 
     public int compareTo(Organization o1, Organization o2) { // by default????????
         return o1.getName().compareTo(o2.getName());
-    }
-
-    @Override
-    protected void finalize() {
-        // TODO serialize and save to xml
     }
 
 }

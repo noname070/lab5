@@ -6,7 +6,6 @@ public class Help extends Command {
 
     public Help() {
         super("help", "display help for available commands");
-        // TODO Auto-generated constructor stub
     }
 
     @Override

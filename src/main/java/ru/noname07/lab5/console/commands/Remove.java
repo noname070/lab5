@@ -1,12 +1,12 @@
 package ru.noname07.lab5.console.commands;
 
+import ru.noname07.lab5.collection.CollectionManager;
 import ru.noname07.lab5.collection.Collector;
 
 public class Remove extends Command {
 
     public Remove() {
         super("remove", "[for dev only]");
-        // TODO Auto-generated constructor stub
     }
 
     public static class RemoveLast extends Command {
@@ -17,7 +17,7 @@ public class Remove extends Command {
 
         @Override
         public void execute() {
-            new Collector().removeLast();
+            CollectionManager.getCollection().removeLast();
         }
 
     }
@@ -30,7 +30,7 @@ public class Remove extends Command {
 
         @Override
         public void execute() {
-            new Collector().removeGreater();
+            CollectionManager.getCollection().removeGreater();
         }
 
     }
@@ -42,23 +42,11 @@ public class Remove extends Command {
         }
 
         @Override
-        public void execute() {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'execute'");
-        }
-
-        @Override
         public void execute(String[] args) {
             int id = Integer.parseInt(args[1]);
-            new Collector().removeById(id);
+            CollectionManager.getCollection().removeById(id);
         }
 
-    }
-
-    @Override
-    public void execute() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'execute'");
     }
 
 }

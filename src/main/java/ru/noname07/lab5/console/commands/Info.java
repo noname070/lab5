@@ -4,7 +4,11 @@ public class Info extends Command {
 
     public Info() {
         super("info", "display info about the collection");
-        //TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void execute() { // TODO
+        super.execute();
     }
 
     
