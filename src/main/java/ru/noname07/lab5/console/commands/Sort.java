@@ -10,8 +10,10 @@ public class Sort extends Command {
 
     @Override
     public void execute() {
-        CollectionManager.getCollection().sort();
-        System.out.println("collection was sorted");
+        if (!CollectionManager.getCollection().isEmpty()) {
+            CollectionManager.getCollection().sort();
+            System.out.println("collection was sorted");
+        } else {System.err.println("Error: Collection is empty.");}
     }
 
     

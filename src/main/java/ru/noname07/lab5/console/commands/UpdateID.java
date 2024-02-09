@@ -1,5 +1,6 @@
 package ru.noname07.lab5.console.commands;
 
+import ru.noname07.lab5.collection.CollectionManager;
 
 public class UpdateID extends Command {
 
@@ -10,7 +11,9 @@ public class UpdateID extends Command {
 
     @Override
     public void execute(String[] args) { // TODO
-        super.execute(args);
+        if (!CollectionManager.getCollection().isEmpty()) {
+            super.execute(args);
+        } else {System.err.println("Error: Collection is empty.");}
     }
 
     

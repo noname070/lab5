@@ -1,10 +1,11 @@
 package ru.noname07.lab5.collection.data;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import ru.noname07.lab5.collection.Valid;
 
-public class Organization implements Valid {
+public class Organization implements Valid, Comparable<Organization> {
 
     private static int nextId = 1;
 
@@ -23,6 +24,7 @@ public class Organization implements Valid {
             OrganizationType type, Address officialAddress) {
         this.id = nextId;
         nextId++;
+        this.name = name;
         this.coordinates = coordinates;
         this.creationDate = java.time.LocalDate.now();
         this.annualTurnover = annualTurnover;
@@ -32,9 +34,67 @@ public class Organization implements Valid {
 
     }
 
-    public Organization(String[] args) {
+    public Organization() { // TODO take into account all the "mistakes"
         this.id = nextId;
         nextId++;
+
+        System.out.println("Create new element `Organization`");
+        @SuppressWarnings("resource")
+        Scanner localScanner = new Scanner(System.in);
+        
+        try {
+            //name
+            String name = "";
+            do {
+                System.out.print("name >");
+                name = localScanner.nextLine();
+            } while (name == null || name.isEmpty() || name.split(" ").length != 1);
+            this.name = name;
+
+            //coordinates
+            this.coordinates = new Coordinates();
+
+            //creationDate
+            this.creationDate = java.time.LocalDate.now();
+
+            //annualTurnover
+            Float annualTurnover = Float.valueOf((float) 0.0);
+            do {
+                System.out.print("annualTurnover >");
+                annualTurnover = Float.parseFloat(localScanner.nextLine());
+            } while (annualTurnover <= 0 || annualTurnover.isNaN() || annualTurnover.isInfinite() || annualTurnover.equals(null)); 
+            this.annualTurnover = annualTurnover;
+
+            //employeesCount
+            Integer employeesCount = 0;
+            do {
+                System.out.print("employeesCount >");
+                employeesCount = Integer.parseInt(localScanner.nextLine());
+            } while (employeesCount <= 0 || employeesCount.equals(null)); 
+            this.employeesCount = employeesCount;
+
+            //type
+            OrganizationType type;
+            do {
+                System.out.println("possible values for `type` : [COMMERCIAL, PUBLIC, GOVERNMENT, PRIVATE_LIMITED_COMPANY, OPEN_JOINT_STOCK_COMPANY]. pls retry.");
+                System.out.print("type >");
+                type = OrganizationType.valueOf(localScanner.nextLine());
+
+            } while (type == null);
+            this.type = type;
+
+            //officialAddress
+            // String officialAddress = "";
+            // do {
+            //     officialAddress = localScanner.nextLine();
+            // } while (officialAddress == null || officialAddress.equals("") || officialAddress.matches("^[0-9]") );
+            // this.officialAddress = officialAddress;
+            this.officialAddress = new Address();
+
+            System.out.println("`Organization` was created");
+
+        } catch (Exception e) {e.printStackTrace();}
+        catch (Error e) {e.printStackTrace();} // TODO
     }
 
     public Integer getId() {
@@ -118,7 +178,7 @@ public class Organization implements Valid {
     @Override
     public String toString() {
         String output = String.format(
-                "ID: %s; Name: %s; Coordinates: (%s, %s); CreationDate: %s, EmployeesCount: %s, AnnualTurnover: %s, OrganizationType: %s, Address: %s",
+                "`Organization` ID: %s; Name: %s; Coordinates: (%s, %s); CreationDate: %s, EmployeesCount: %s, AnnualTurnover: %s, OrganizationType: %s, Address: %s",
                 this.getId(),
                 this.getName(),
                 this.getCoordinates().getX(), this.getCoordinates().getY(),
@@ -129,6 +189,11 @@ public class Organization implements Valid {
                 this.getAddress());
 
         return output;
+    }
+
+    public int compareTo(Organization inputOrg) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
     }
 
 }

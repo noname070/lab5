@@ -1,5 +1,7 @@
 package ru.noname07.lab5.collection.data;
 
+import java.util.Scanner;
+
 import ru.noname07.lab5.collection.Valid;
 
 public class Coordinates implements Valid {
@@ -9,6 +11,27 @@ public class Coordinates implements Valid {
     public Coordinates(double x, Float y) {
         this.x = x;
         this.y = y;
+    }
+    
+    public Coordinates() { // TODO take into account all the "mistakes"
+        @SuppressWarnings("resource")
+        Scanner localScanner = new Scanner(System.in);
+
+        System.out.println("Create new `Coordinates`");
+
+        Double x; Float y;
+        do {
+            System.out.print("x >");
+            x = Double.parseDouble(localScanner.nextLine());
+        } while (x.isNaN() || x == null || x.isInfinite());
+
+        do {
+            System.out.print("y >");
+            y = Float.parseFloat(localScanner.nextLine());
+        } while (y.isNaN() || y == null || y.isInfinite());
+
+        System.out.println("`Coordinates` was created");
+
     }
 
     public Double getX() {

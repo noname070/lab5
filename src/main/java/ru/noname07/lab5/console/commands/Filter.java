@@ -1,6 +1,6 @@
 package ru.noname07.lab5.console.commands;
 
-import java.util.ArrayList;
+import java.util.Deque;
 
 import ru.noname07.lab5.collection.CollectionManager;
 import ru.noname07.lab5.collection.data.Organization;
@@ -20,11 +20,13 @@ public class Filter extends Command {
 
         @Override
         public void execute(String[] args) {
-            ArrayList<Organization> output = CollectionManager.getCollection()
-            .filterByAnnualTurnover(Float.parseFloat(args[1]));
+            if (!CollectionManager.getCollection().isEmpty()) {
+                Deque<Organization> output = CollectionManager.getCollection()
+                .filterByAnnualTurnover(Float.parseFloat(args[1]));
 
-            System.out.printf("Collection filtered by annualTurnover=%s :", args[1]);
-            Printer.printCollection(output);
+                System.out.printf("Collection filtered by annualTurnover=%s :", args[1]);
+                Printer.printCollection(output);
+            } else {System.err.println("Error: Collection is empty.");}
         }
         
     }
@@ -37,12 +39,15 @@ public class Filter extends Command {
 
         @Override
         public void execute(String[] args) {
-            ArrayList<Organization> output = CollectionManager.getCollection()
+        if (!CollectionManager.getCollection().isEmpty()) {
+            Deque<Organization> output = CollectionManager.getCollection()
             .filterGreaterThanAnnualTurnover(Float.parseFloat(args[1]));
 
             System.out.printf("Collection filtered by annualTurnover=%s :", args[1]); // TODO
             Printer.printCollection(output);
-        }
+        } else {System.err.println("Error: Collection is empty.");}
+
+    }  
 
     }
 

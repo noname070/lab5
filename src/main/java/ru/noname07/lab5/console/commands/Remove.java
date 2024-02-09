@@ -17,7 +17,9 @@ public class Remove extends Command {
 
         @Override
         public void execute() {
-            CollectionManager.getCollection().removeLast();
+            if (!CollectionManager.getCollection().isEmpty()) {
+                CollectionManager.getCollection().removeLast();
+            } else {System.err.println("Error: Collection is empty.");}
         }
 
     }
@@ -30,7 +32,11 @@ public class Remove extends Command {
 
         @Override
         public void execute() {
-            CollectionManager.getCollection().removeGreater();
+            if (!CollectionManager.getCollection().isEmpty()) {
+                CollectionManager.getCollection()
+                        .removeGreater(
+                                Collector.createNewElement());
+            } else {System.err.println("Error: Collection is empty.");}
         }
 
     }
@@ -43,8 +49,10 @@ public class Remove extends Command {
 
         @Override
         public void execute(String[] args) {
-            int id = Integer.parseInt(args[1]);
-            CollectionManager.getCollection().removeById(id);
+            if (!CollectionManager.getCollection().isEmpty()) {
+                int id = Integer.parseInt(args[1]);
+                CollectionManager.getCollection().removeById(id);
+            }
         }
 
     }

@@ -6,6 +6,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.LinkedList;
 
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -32,7 +33,7 @@ public class Serializer {
     @SuppressWarnings("unchecked")
     public LinkedList<Organization> deserialize(String xml) throws JAXBException {
         StringReader stringReader = new StringReader(xml);
-        return LinkedList.class.cast(this.unmarshaller.unmarshal(stringReader));
+        return (LinkedList<Organization>) this.unmarshaller.unmarshal(stringReader);
     }
 
 }

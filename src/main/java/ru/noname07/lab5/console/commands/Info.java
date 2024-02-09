@@ -1,5 +1,7 @@
 package ru.noname07.lab5.console.commands;
 
+import ru.noname07.lab5.collection.CollectionManager;
+
 public class Info extends Command {
 
     public Info() {
@@ -8,7 +10,9 @@ public class Info extends Command {
 
     @Override
     public void execute() { // TODO
-        super.execute();
+        if (!CollectionManager.getCollection().isEmpty()) {
+            super.execute();
+        } else {System.err.println("Error: Collection is empty.");}
     }
 
     

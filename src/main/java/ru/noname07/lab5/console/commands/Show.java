@@ -11,7 +11,9 @@ public class Show extends Command {
 
     @Override
     public void execute() { // TODO ???
-        Printer.printCollection(CollectionManager.getCollection());
+        if (!CollectionManager.getCollection().isEmpty()) {
+            Printer.printCollection(CollectionManager.getCollection());
+        } else {System.err.println("Error: Collection is empty.");}
     }
 
     

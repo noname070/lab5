@@ -1,5 +1,7 @@
 package ru.noname07.lab5.console.commands;
 
+import ru.noname07.lab5.collection.CollectionManager;
+
 public class Save extends Command {
 
     public Save() {
@@ -8,7 +10,9 @@ public class Save extends Command {
 
     @Override
     public void execute() { // TODO
-        System.out.println("Collection saved to file.");
+        if (!CollectionManager.getCollection().isEmpty()) {
+            System.out.println("Collection saved to file.");
+        } else {System.err.println("Error: Collection is empty.");}
     }
 
 }
