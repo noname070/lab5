@@ -5,7 +5,7 @@ import ru.noname07.lab5.collection.CollectionManager;
 public class Clear extends Command {
 
     public Clear() {
-        super("clear", "clear the collection");
+        super("clear", "clear the collection", false);
     }
 
     @Override
@@ -14,5 +14,4 @@ public class Clear extends Command {
         System.out.println("Collection was cleared.");
     }
 
-    
 }

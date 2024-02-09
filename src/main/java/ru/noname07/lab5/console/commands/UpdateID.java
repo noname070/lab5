@@ -5,8 +5,7 @@ import ru.noname07.lab5.collection.CollectionManager;
 public class UpdateID extends Command {
 
     public UpdateID() {
-        super("update", "update the value of collection element by id");
-        //TODO Auto-generated constructor stub
+        super("update", "update the value of collection element by id", true);
     }
 
     @Override

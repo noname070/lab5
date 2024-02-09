@@ -3,7 +3,7 @@ package ru.noname07.lab5.console.commands;
 public class ExecureScript extends Command {
 
     public ExecureScript() {
-        super("excute script", "read and execute the script from the specified file");
+        super("excute script", "read and execute the script from the specified file", true);
 
     }
 
@@ -12,6 +12,4 @@ public class ExecureScript extends Command {
         throw new UnsupportedOperationException("Unimplemented method 'execute' in ExecuteScript");
     }
 
-
-    
 }

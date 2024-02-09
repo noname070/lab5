@@ -8,16 +8,15 @@ import ru.noname07.lab5.collection.data.Organization;
 public class Add extends Command {
 
     public Add() {
-        super("add", "add new element in collection");
+        super("add", "add new element in collection", false);
     }
 
     @Override
     public void execute() { // TODO
         Organization element = Collector.createNewElement();
-        CollectionManager.getCollection().addElement(element);
-
-        System.out.println("New element was added.");
+        if (element.isValid()) {
+            CollectionManager.getCollection().addElement(element);
+        } else {System.err.println("Element invalid. Collection is not updated");}
     }
 
-    
 }

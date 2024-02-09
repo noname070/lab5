@@ -1,18 +1,17 @@
 package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.collection.CollectionManager;
-import ru.noname07.lab5.utils.Printer;
 
 public class Show extends Command {
 
     public Show() {
-        super("show", "display all elements of the collection");
+        super("show", "display all elements of the collection", false);
     }
 
     @Override
-    public void execute() { // TODO ???
+    public void execute() {
         if (!CollectionManager.getCollection().isEmpty()) {
-            Printer.printCollection(CollectionManager.getCollection());
+            System.out.println(CollectionManager.getCollection());
         } else {System.err.println("Error: Collection is empty.");}
     }
 

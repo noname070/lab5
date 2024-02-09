@@ -43,17 +43,23 @@ public class Console {
         String commandLine = scanner.nextLine();
         String input[] = commandLine.split(" ");
 
-        try { // TODO args to commands
-            if (input.length == 1) {
-                commandList.get(input[0]).execute();
-            } else if (input.length == 2) {
-                commandList.get(input[0]).execute(input);
-            } else {
-                System.out.println("Smthng wrong........");
+        if (input.length == 0) {
+            System.out.println("");
+        } else if (commandList.containsKey(input[0])) {
+            switch (input.length) {
+                case 1:
+                    commandList.get(input[0]).execute();
+
+                case 2:
+                    commandList.get(input[0]).execute(input);
+
+                default:
+                    System.out.println("Error: Too many args.");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            System.err.printf("Unknow command: '%s'\n", input[0]);
         }
+
     }
 
 }

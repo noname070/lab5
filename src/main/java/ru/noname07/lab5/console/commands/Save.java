@@ -5,12 +5,13 @@ import ru.noname07.lab5.collection.CollectionManager;
 public class Save extends Command {
 
     public Save() {
-        super("save", "save collection to file");
+        super("save", "save collection to file", false);
     }
 
     @Override
-    public void execute() { // TODO
+    public void execute() {
         if (!CollectionManager.getCollection().isEmpty()) {
+            CollectionManager.saveData();
             System.out.println("Collection saved to file.");
         } else {System.err.println("Error: Collection is empty.");}
     }

@@ -5,7 +5,7 @@ import ru.noname07.lab5.console.Console;
 public class Help extends Command {
 
     public Help() {
-        super("help", "display help for available commands");
+        super("help", "display help for available commands", false);
     }
 
     @Override

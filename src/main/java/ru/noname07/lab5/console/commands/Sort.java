@@ -5,7 +5,7 @@ import ru.noname07.lab5.collection.CollectionManager;
 public class Sort extends Command {
 
     public Sort() {
-        super("sort", "sort collection in natural order");
+        super("sort", "sort collection in natural order", false);
     }
 
     @Override
