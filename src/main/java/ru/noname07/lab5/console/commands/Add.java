@@ -1,9 +1,8 @@
 package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.collection.CollectionManager;
-import ru.noname07.lab5.collection.Collector;
-
 import ru.noname07.lab5.collection.data.Organization;
+import ru.noname07.lab5.console.CreateNewElement;
 
 public class Add extends Command {
 
@@ -12,11 +11,13 @@ public class Add extends Command {
     }
 
     @Override
-    public void execute() { // TODO
-        Organization element = Collector.createNewElement();
+    public void execute() {
+        Organization element = CreateNewElement.newElement();
         if (element.isValid()) {
-            CollectionManager.getCollection().addElement(element);
-        } else {System.err.println("Element invalid. Collection is not updated");}
+            CollectionManager.getData().add(element);
+        } else {
+            System.err.println("Element invalid. Collection is not updated");
+        }
     }
 
 }

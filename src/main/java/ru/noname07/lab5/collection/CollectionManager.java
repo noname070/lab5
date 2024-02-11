@@ -12,18 +12,16 @@ import ru.noname07.lab5.utils.Serializer;
 
 public class CollectionManager {
     private static LinkedList<Organization> data = new LinkedList<Organization>();
-    private static Collector collector = new Collector(data);
 
 
-    public static Collector getCollection() {
-        return collector;
+    public static LinkedList<Organization> getData() {
+        return data;
     }
 
     public static void loadData() { // TODO testing
         try {
             String rawData = IOManager.readFromFile(null);
             data = new Serializer().deserialize(rawData);
-            collector = new Collector(data);
         
         } catch (JAXBException e) {
             System.err.println("JAXBException in loadData");

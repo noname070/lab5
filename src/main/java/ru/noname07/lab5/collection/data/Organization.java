@@ -34,7 +34,14 @@ public class Organization implements Valid, Comparable<Organization> {
 
     }
 
-    public Organization() { // TODO take into account all the "mistakes"
+    public Organization() {
+        this.id = nextId;
+        nextId++;
+
+        this.creationDate = java.time.LocalDate.now();
+    }
+
+    public Organization(String[] args) { // TODO take into account all the "mistakes"
         this.id = nextId;
         nextId++;
 
@@ -43,12 +50,12 @@ public class Organization implements Valid, Comparable<Organization> {
         Scanner localScanner = new Scanner(System.in);
         
         try {
-            //name
-            String name = "";
+            //name // TODO name can`t starts with/contain number(s)
+            String name = ""; 
             do {
                 System.out.print("name >");
                 name = localScanner.nextLine();
-            } while (name == null || name.isEmpty() || name.split(" ").length != 1);
+            } while (name == null || name.isEmpty() || name.matches("[0-9]"));
             this.name = name;
 
             //coordinates
@@ -57,12 +64,13 @@ public class Organization implements Valid, Comparable<Organization> {
             //creationDate
             this.creationDate = java.time.LocalDate.now();
 
-            //annualTurnover
+            //annualTurnover // TODO only numbers
             Float annualTurnover = Float.valueOf((float) 0.0);
             do {
                 System.out.print("annualTurnover >");
                 annualTurnover = Float.parseFloat(localScanner.nextLine());
             } while (annualTurnover <= 0 || annualTurnover.isNaN() || annualTurnover.isInfinite() || annualTurnover.equals(null)); 
+            
             this.annualTurnover = annualTurnover;
 
             //employeesCount
@@ -149,9 +157,14 @@ public class Organization implements Valid, Comparable<Organization> {
         this.type = newType;
     }
 
-    protected void setAddress(Address newAddress) {
+    public void setAddress(Address newAddress) {
         this.officialAddress = newAddress;
     }
+
+    public void setType(OrganizationType type) {
+        this.type = type;
+    }
+
 
     @Override
     public boolean isValid() {

@@ -33,7 +33,7 @@ public abstract class Command implements ICommand {
             } else
                 System.out.printf("executed %s with args: %s\n", this.getClass().getName(), args[0]);
         } else {
-            System.err.printf("You can`t use '%s' without args\n");
+            System.err.printf("You can`t use '%s' with args\n", this.name);
         }
     }
 

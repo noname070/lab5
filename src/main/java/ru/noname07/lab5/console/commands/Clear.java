@@ -10,7 +10,7 @@ public class Clear extends Command {
 
     @Override
     public void execute() {
-        CollectionManager.getCollection().clearData();
+        CollectionManager.getData().clear();
         System.out.println("Collection was cleared.");
     }
 

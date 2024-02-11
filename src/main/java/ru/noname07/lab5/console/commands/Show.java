@@ -10,8 +10,8 @@ public class Show extends Command {
 
     @Override
     public void execute() {
-        if (!CollectionManager.getCollection().isEmpty()) {
-            System.out.println(CollectionManager.getCollection());
+        if (!CollectionManager.getData().isEmpty()) {
+            // System.out.println(CollectionManager.getData()); // TODO Printer
         } else {System.err.println("Error: Collection is empty.");}
     }
 

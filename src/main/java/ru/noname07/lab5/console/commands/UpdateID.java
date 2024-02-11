@@ -10,7 +10,7 @@ public class UpdateID extends Command {
 
     @Override
     public void execute(String[] args) { // TODO
-        if (!CollectionManager.getCollection().isEmpty()) {
+        if (!CollectionManager.getData().isEmpty()) {
             super.execute(args);
         } else {System.err.println("Error: Collection is empty.");}
     }

@@ -10,7 +10,7 @@ public class Save extends Command {
 
     @Override
     public void execute() {
-        if (!CollectionManager.getCollection().isEmpty()) {
+        if (!CollectionManager.getData().isEmpty()) {
             CollectionManager.saveData();
             System.out.println("Collection saved to file.");
         } else {System.err.println("Error: Collection is empty.");}

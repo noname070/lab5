@@ -10,7 +10,7 @@ public class Info extends Command {
 
     @Override
     public void execute() { // TODO
-        if (!CollectionManager.getCollection().isEmpty()) {
+        if (!CollectionManager.getData().isEmpty()) {
             super.execute();
         } else {
             System.err.println("Error: Collection is empty.");

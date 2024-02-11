@@ -19,7 +19,7 @@ public class Coordinates implements Valid {
 
         System.out.println("Create new `Coordinates`");
 
-        Double x; Float y;
+        Double x; Float y;  // TODO numbers only.
         do {
             System.out.print("x >");
             x = Double.parseDouble(localScanner.nextLine());
@@ -32,6 +32,14 @@ public class Coordinates implements Valid {
 
         System.out.println("`Coordinates` was created");
 
+    }
+
+    public void setX(Double x) {
+        this.x = x;
+    }
+
+    public void setY(Float y) {
+        this.y = y;
     }
 
     public Double getX() {

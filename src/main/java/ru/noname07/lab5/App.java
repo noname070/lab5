@@ -7,7 +7,6 @@ public class App {
     public static final String FILE_PATH = "src/main/resources/data.xml";
 
     public static void main(String[] args) throws Exception {
-
         while (Console.isWorking()) {
             Console.processCommand();
         }

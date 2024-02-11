@@ -19,8 +19,9 @@ public class Address implements Valid {
 
         String street = "";
         do {
+            System.out.print("street >");
             street = localScanner.nextLine();
-        } while (street == null || street.equals("") || street.matches("^[0-9]") );
+        } while (street == null || street.equals("") || street.matches("^[0-9]"));
         this.street = street;
 
         System.err.println("`Address` was created");
@@ -28,6 +29,10 @@ public class Address implements Valid {
 
     public String getStreet() {
         return this.street;
+    }
+
+    public void setAddress() {
+        this.street = street;
     }
 
     @Override

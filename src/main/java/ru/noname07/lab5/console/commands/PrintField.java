@@ -11,9 +11,9 @@ public class PrintField extends Command {
 
     @Override
     public void execute() {
-        if (!CollectionManager.getCollection().isEmpty()) {
+        if (!CollectionManager.getData().isEmpty()) {
             System.out.println("Collection officialAddresses:");
-            CollectionManager.getCollection().printSortedOfficialAddress();
+                // CollectionManager.getData().printSortedOfficialAddress(); // TODO
         } else {
             System.err.println("Error: Collection is empty.");
         }
