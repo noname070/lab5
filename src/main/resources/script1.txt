@@ -1,0 +1,11 @@
+info
+show
+add
+ITMO
+3
+4
+34
+235
+PUBLIC
+lomo9
+clear

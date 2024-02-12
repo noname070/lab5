@@ -1,5 +1,7 @@
 package ru.noname07.lab5.console;
 
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -7,7 +9,10 @@ import ru.noname07.lab5.console.commands.*;
 
 public class Console {
     private static final HashMap<String, Command> commandList = new HashMap<String, Command>();
-    private static boolean isWorking = true;
+    private boolean isWorking = true;
+    private Scanner scanner;
+    private InputStream inputStream;
+    private PrintStream printStream;
 
     static {
         commandList.put("help", new Help());
@@ -28,33 +33,50 @@ public class Console {
         commandList.put("print_field_ascending_official_address", new PrintField());
     }
 
-    public static HashMap<String, Command> getCommandList() {
+    public Console(Scanner scanner, InputStream inputStream, PrintStream printStream) {
+        this.scanner = scanner;
+        this.inputStream = inputStream;
+        this.printStream = printStream;
+    }
+
+    public void setStreams(InputStream inputStream, PrintStream printStream) {
+        this.inputStream = inputStream;
+        this.printStream = printStream;
+        this.scanner = new Scanner(inputStream);
+    }
+
+    public InputStream getInputStream() {return this.inputStream;}
+    public PrintStream getPrintStream() {return this.printStream;}
+
+    public HashMap<String, Command> getCommandList() {
         return Console.commandList;
     }
 
-    public static boolean isWorking() {
-        return isWorking;
+    public boolean isWorking() {
+        return this.isWorking;
     }
 
-    public static void processCommand() {
-        Scanner scanner = new Scanner(System.in);
-        processCommand(scanner);
-
+    public void setWork() {
+        this.isWorking = true;
     }
 
-    public static void processCommand(Scanner scanner) {
+    public void processCommand() {
+        if (!scanner.hasNext()) {
+            this.isWorking = false;
+            return;
+        }
         String commandLine = scanner.nextLine();
         String input[] = commandLine.split(" ");
 
-        if (input.length == 0) {
-        } else if (commandList.containsKey(input[0])) {
-            if (input.length == 1) {
-                commandList.get(input[0]).execute();
-            } else if (input.length == 2) {
-                commandList.get(input[0]).execute(input);
+        if (!(input.length == 0)) {
+            if (commandList.containsKey(input[0])) {
+                if (input.length == 1) {
+                    commandList.get(input[0]).execute();
+                } else if (input.length == 2) {
+                    commandList.get(input[0]).execute(input);
+                }
             }
         }
-
     }
 
 }

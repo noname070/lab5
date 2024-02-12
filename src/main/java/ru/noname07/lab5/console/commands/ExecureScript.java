@@ -1,9 +1,11 @@
 package ru.noname07.lab5.console.commands;
 
-import ru.noname07.lab5.console.Console;
+import ru.noname07.lab5.App;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -22,24 +24,28 @@ public class ExecureScript extends Command {
             return;
         }
 
-        PrintStream stdOut = System.out;
-
         try (FileInputStream commandsStream = new FileInputStream(file)) {
-            System.setOut(null);
-            Scanner scanner = new Scanner(commandsStream);
-            while (scanner.hasNext()) {
-                Console.processCommand(scanner);
+            App.console.setStreams(commandsStream,
+                    new PrintStream(new OutputStream() {
+                        @Override
+                        public void write(int b) throws IOException {
+                            return;
+                        }
+                    }));
+
+            while (App.console.isWorking()) {
+                App.console.processCommand();
             }
 
-            stdOut.println("Script executed.");
+            System.out.println("Script executed.");
+            App.console.setWork();
 
         } catch (IOException e) {
             System.err.println("Error i/o with script file");
             e.printStackTrace();
         } finally {
-            System.setOut(stdOut);
+            App.console.setStreams(System.in, System.out);
         }
-
     }
 
 }

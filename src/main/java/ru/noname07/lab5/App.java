@@ -1,5 +1,7 @@
 package ru.noname07.lab5;
 
+import java.util.Scanner;
+
 import ru.noname07.lab5.collection.CollectionManager;
 import ru.noname07.lab5.console.Console;
 
@@ -7,6 +9,7 @@ public class App {
 
     public static String FILE_PATH;
     public static CollectionManager collection;
+    public static Console console = new Console(new Scanner(System.in), System.in, System.out);
 
     public static void main(String[] args) throws Exception {
         if (args.length > 0) {
@@ -18,9 +21,9 @@ public class App {
         collection = new CollectionManager();
         collection.loadData();
 
-        while (Console.isWorking()) {
+        while (console.isWorking()) {
             System.out.print("|<lab5>| >");
-            Console.processCommand();
+            console.processCommand();
         }
     }
 
