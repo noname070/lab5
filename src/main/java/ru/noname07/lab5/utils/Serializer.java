@@ -1,11 +1,10 @@
 package ru.noname07.lab5.utils;
 
-import ru.noname07.lab5.collection.data.Organization;
+import ru.noname07.lab5.collection.data.*;
 
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.LinkedList;
-
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -18,7 +17,8 @@ public class Serializer {
     private Unmarshaller unmarshaller;
 
     public Serializer() throws JAXBException {
-        this.jaxbContext = JAXBContext.newInstance(LinkedList.class);
+        this.jaxbContext = JAXBContext.newInstance(Organization.class, Address.class, Coordinates.class,
+                OrganizationType.class);
         this.marshaller = jaxbContext.createMarshaller();
         this.unmarshaller = jaxbContext.createUnmarshaller();
     }
@@ -34,6 +34,7 @@ public class Serializer {
     public LinkedList<Organization> deserialize(String xml) throws JAXBException {
         StringReader stringReader = new StringReader(xml);
         return (LinkedList<Organization>) this.unmarshaller.unmarshal(stringReader);
+
     }
 
 }

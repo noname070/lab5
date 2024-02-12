@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.stream.IntStream;
 
-import ru.noname07.lab5.collection.CollectionManager;
+import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 
 public class Remove {
@@ -14,13 +14,13 @@ public class Remove {
     public static class RemoveLast extends Command {
 
         public RemoveLast() {
-            super("remove_last", "remove the last element from collection", false);
+            super("remove_last", "remove the last element from Collection", false);
         }
 
         @Override
         public void execute() {
-            if (!CollectionManager.getData().isEmpty()) {
-                CollectionManager.getData().removeLast();
+            if (!App.collection.getData().isEmpty()) {
+                App.collection.getData().removeLast();
             } else {
                 System.err.println("Error: Collection is empty.");
             }
@@ -31,15 +31,15 @@ public class Remove {
     public static class RemoveGreater extends Command {
 
         public RemoveGreater() {
-            super("remove_greater", "remove from a collection all elements greater than given", true);
+            super("remove_greater", "remove from a Collection all elements greater than given", true);
         }
 
         @Override
         public void execute() {
-            if (!CollectionManager.getData().isEmpty()) {
+            if (!App.collection.getData().isEmpty()) {
                 Organization inputElement = null;
                 // new inputElement
-                LinkedList<Organization> data = CollectionManager.getData();
+                LinkedList<Organization> data = App.collection.getData();
 
                 Iterator<Organization> iter = data.iterator();
 
@@ -73,8 +73,8 @@ public class Remove {
 
         @Override
         public void execute(String[] args) {
-            if (!CollectionManager.getData().isEmpty()) {
-                LinkedList<Organization> data = CollectionManager.getData();
+            if (!App.collection.getData().isEmpty()) {
+                LinkedList<Organization> data = App.collection.getData();
 
                 int id = Integer.parseInt(args[1]);
                 Iterator<Organization> iter = data.iterator();
@@ -83,8 +83,9 @@ public class Remove {
                     if (org.getId().equals(id)) {
                         iter.remove();
 
-                        System.out.printf("Element `Organization` %s[id:%s hashcode:%s] was removed.",
+                        System.out.printf("Element `Organization` %s[id:%s hashcode:%s] was removed. \n",
                                 org.getName(), org.getId(), org.hashCode());
+                        break;
                     }
                 }
             }

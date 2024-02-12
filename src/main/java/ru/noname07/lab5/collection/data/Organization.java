@@ -1,10 +1,12 @@
 package ru.noname07.lab5.collection.data;
 
 import java.time.LocalDate;
-import java.util.Scanner;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import ru.noname07.lab5.collection.Valid;
 
+@XmlRootElement
 public class Organization implements Valid, Comparable<Organization> {
 
     private static int nextId = 1;
@@ -41,70 +43,6 @@ public class Organization implements Valid, Comparable<Organization> {
         this.creationDate = java.time.LocalDate.now();
     }
 
-    public Organization(String[] args) { // TODO take into account all the "mistakes"
-        this.id = nextId;
-        nextId++;
-
-        System.out.println("Create new element `Organization`");
-        @SuppressWarnings("resource")
-        Scanner localScanner = new Scanner(System.in);
-        
-        try {
-            //name // TODO name can`t starts with/contain number(s)
-            String name = ""; 
-            do {
-                System.out.print("name >");
-                name = localScanner.nextLine();
-            } while (name == null || name.isEmpty() || name.matches("[0-9]"));
-            this.name = name;
-
-            //coordinates
-            this.coordinates = new Coordinates();
-
-            //creationDate
-            this.creationDate = java.time.LocalDate.now();
-
-            //annualTurnover // TODO only numbers
-            Float annualTurnover = Float.valueOf((float) 0.0);
-            do {
-                System.out.print("annualTurnover >");
-                annualTurnover = Float.parseFloat(localScanner.nextLine());
-            } while (annualTurnover <= 0 || annualTurnover.isNaN() || annualTurnover.isInfinite() || annualTurnover.equals(null)); 
-            
-            this.annualTurnover = annualTurnover;
-
-            //employeesCount
-            Integer employeesCount = 0;
-            do {
-                System.out.print("employeesCount >");
-                employeesCount = Integer.parseInt(localScanner.nextLine());
-            } while (employeesCount <= 0 || employeesCount.equals(null)); 
-            this.employeesCount = employeesCount;
-
-            //type
-            OrganizationType type;
-            do {
-                System.out.println("possible values for `type` : [COMMERCIAL, PUBLIC, GOVERNMENT, PRIVATE_LIMITED_COMPANY, OPEN_JOINT_STOCK_COMPANY]. pls retry.");
-                System.out.print("type >");
-                type = OrganizationType.valueOf(localScanner.nextLine());
-
-            } while (type == null);
-            this.type = type;
-
-            //officialAddress
-            // String officialAddress = "";
-            // do {
-            //     officialAddress = localScanner.nextLine();
-            // } while (officialAddress == null || officialAddress.equals("") || officialAddress.matches("^[0-9]") );
-            // this.officialAddress = officialAddress;
-            this.officialAddress = new Address();
-
-            System.out.println("`Organization` was created");
-
-        } catch (Exception e) {e.printStackTrace();}
-        catch (Error e) {e.printStackTrace();} // TODO
-    }
-
     public Integer getId() {
         return this.id;
     }
@@ -135,6 +73,14 @@ public class Organization implements Valid, Comparable<Organization> {
 
     public Address getAddress() {
         return this.officialAddress;
+    }
+
+    public static void setStartId(Integer id) {
+        nextId = id+1;
+    }
+
+    public static int getStartId() {
+        return nextId;
     }
 
     public void setName(String newName) {
@@ -178,9 +124,10 @@ public class Organization implements Valid, Comparable<Organization> {
             return false;
         if (this.employeesCount == null || this.employeesCount <= 0)
             return false;
-        if (this.annualTurnover <= 0)
-            return false;
-        if (this.type == null || !this.officialAddress.isValid())
+        if (this.annualTurnover != null) {
+            if (this.annualTurnover < 0) return false;
+        }
+        if (this.type == null)
             return false;
         if (this.officialAddress == null || !this.officialAddress.isValid())
             return false;
@@ -199,14 +146,13 @@ public class Organization implements Valid, Comparable<Organization> {
                 this.getEmployeesCount(),
                 this.getAnnualTurnover(),
                 this.getOrganizationType(),
-                this.getAddress());
+                this.getAddress().getStreet());
 
         return output;
     }
 
-    public int compareTo(Organization inputOrg) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+    public int compareTo(Organization org) {
+        return org.getEmployeesCount();
     }
 
 }

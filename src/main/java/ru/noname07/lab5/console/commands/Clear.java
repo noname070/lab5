@@ -1,6 +1,6 @@
 package ru.noname07.lab5.console.commands;
 
-import ru.noname07.lab5.collection.CollectionManager;
+import ru.noname07.lab5.App;
 
 public class Clear extends Command {
 
@@ -10,7 +10,7 @@ public class Clear extends Command {
 
     @Override
     public void execute() {
-        CollectionManager.getData().clear();
+        App.collection.getData().clear();
         System.out.println("Collection was cleared.");
     }
 

@@ -1,9 +1,10 @@
 package ru.noname07.lab5.collection.data;
 
-import java.util.Scanner;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import ru.noname07.lab5.collection.Valid;
 
+@XmlRootElement
 public class Address implements Valid {
     private String street; // Поле может быть null
 
@@ -11,27 +12,11 @@ public class Address implements Valid {
         this.street = street;
     }
 
-    public Address() { // TODO take into account all the "mistakes"
-        @SuppressWarnings("resource")
-        Scanner localScanner = new Scanner(System.in);
-
-        System.out.println("Create new `Address`");
-
-        String street = "";
-        do {
-            System.out.print("street >");
-            street = localScanner.nextLine();
-        } while (street == null || street.equals("") || street.matches("^[0-9]"));
-        this.street = street;
-
-        System.err.println("`Address` was created");
-    }
-
     public String getStreet() {
         return this.street;
     }
 
-    public void setAddress() {
+    public void setAddress(String street) {
         this.street = street;
     }
 

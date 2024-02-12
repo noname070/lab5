@@ -1,9 +1,11 @@
 package ru.noname07.lab5.collection.data;
 
-import java.util.Scanner;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import ru.noname07.lab5.collection.Valid;
 
+@XmlRootElement
 public class Coordinates implements Valid {
     private Double x;
     private Float y;
@@ -13,24 +15,7 @@ public class Coordinates implements Valid {
         this.y = y;
     }
     
-    public Coordinates() { // TODO take into account all the "mistakes"
-        @SuppressWarnings("resource")
-        Scanner localScanner = new Scanner(System.in);
-
-        System.out.println("Create new `Coordinates`");
-
-        Double x; Float y;  // TODO numbers only.
-        do {
-            System.out.print("x >");
-            x = Double.parseDouble(localScanner.nextLine());
-        } while (x.isNaN() || x == null || x.isInfinite());
-
-        do {
-            System.out.print("y >");
-            y = Float.parseFloat(localScanner.nextLine());
-        } while (y.isNaN() || y == null || y.isInfinite());
-
-        System.out.println("`Coordinates` was created");
+    public Coordinates() {
 
     }
 

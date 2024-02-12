@@ -14,7 +14,7 @@ public class Console {
         commandList.put("info", new Info());
         commandList.put("show", new Show());
         commandList.put("add", new Add());
-        commandList.put("update_id", new UpdateID());
+        commandList.put("update", new Update());
         commandList.put("remove_by_id", new Remove.RemoveById());
         commandList.put("clear", new Clear());
         commandList.put("save", new Save());
@@ -37,21 +37,21 @@ public class Console {
     }
 
     public static void processCommand() {
-        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
-        System.out.print("|<lab5>| > ");
+        processCommand(scanner);
+
+    }
+
+    public static void processCommand(Scanner scanner) {
         String commandLine = scanner.nextLine();
         String input[] = commandLine.split(" ");
 
         if (input.length == 0) {
-            System.out.println("");
         } else if (commandList.containsKey(input[0])) {
             if (input.length == 1) {
                 commandList.get(input[0]).execute();
             } else if (input.length == 2) {
                 commandList.get(input[0]).execute(input);
-            } else {
-                System.err.println("Error: Too many args");
             }
         }
 
