@@ -1,5 +1,6 @@
 package ru.noname07.lab5;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 import ru.noname07.lab5.collection.CollectionManager;
@@ -7,20 +8,26 @@ import ru.noname07.lab5.console.Console;
 
 /* TODO
  * ВЫБОР ЯЗЫКА / ЛОКАЛИЗАЦИЯ
+ * attention! shitcode
  */
 
-public class App {
 
+public class App {
+    public static Locale currentLocale = new Locale("ru_RU");
     public static String FILE_PATH;
     public static CollectionManager collection;
     public static Console console = new Console();
     public static String toScriptSave = "";
 
     public static void main(String[] args) throws Exception {
-        if (args.length > 0) {
+        if (args.length == 1) {
             FILE_PATH = args[0];
+        } else if (args.length == 2) {
+            FILE_PATH = args[0];
+            currentLocale = new Locale(args[1].equals("ru") ? "ru_RU" : "en_EN");
         } else {
-            FILE_PATH = "src/main/resources/data.xml";
+            FILE_PATH = "src/main/resources/AppData/data.xml";
+            currentLocale = new Locale("en_EN");
         }
 
         collection = new CollectionManager();

@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.noname07.lab5"},{"l":"ru.noname07.lab5.collection"},{"l":"ru.noname07.lab5.collection.data"},{"l":"ru.noname07.lab5.console"},{"l":"ru.noname07.lab5.console.commands"},{"l":"ru.noname07.lab5.utils"}];updateSearchResults();

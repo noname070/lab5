@@ -6,7 +6,7 @@ import ru.noname07.lab5.collection.data.Organization;
 public class Show extends Command {
 
     public Show() {
-        super("show", "display all elements of the Collection", false);
+        super("show", Command.commandsBundle.getString("command.show.description"), false);
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Show extends Command {
             for (Organization org : App.collection.getData()) {
                 System.out.println(org);
             }
-        } else {System.err.println("Error: Collection is empty.");}
+        } else {System.err.println(Command.commandsBundle.getString("command.err.empty"));}
     }
 
     

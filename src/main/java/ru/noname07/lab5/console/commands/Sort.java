@@ -8,7 +8,7 @@ import ru.noname07.lab5.collection.data.Organization;
 public class Sort extends Command {
 
     public Sort() {
-        super("sort", "sort Collection in natural order", false);
+        super("sort", commandsBundle.getString("command.sort.description"), false);
     }
 
     @Override
@@ -27,9 +27,9 @@ public class Sort extends Command {
 
                 data.set(j + 1, key);
             }
-            System.out.println("Collection was sorted");
+            System.out.println(commandsBundle.getString("command.sort.execute"));
         } else {
-            System.err.println("Error: Collection is empty.");
+            System.err.println(commandsBundle.getString("command.err.empty"));
         }
     }
 

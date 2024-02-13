@@ -5,7 +5,7 @@ import ru.noname07.lab5.App;
 public class Help extends Command {
 
     public Help() {
-        super("help", "display help for available commands", false);
+        super("help", Command.commandsBundle.getString("command.help.description"), false);
     }
 
     @Override

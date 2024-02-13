@@ -10,7 +10,7 @@ import ru.noname07.lab5.console.CreateNewElement;
 public class Update extends Command {
 
     public Update() {
-        super("update", "update the value of Collection element by id", true);
+        super("update", commandsBundle.getString("command.update.description"), true);
     }
 
     @Override
@@ -20,16 +20,16 @@ public class Update extends Command {
             if (StringUtils.isNumeric(args[0])) {
                 int id = Integer.parseInt(args[0]);
                 if (!(id < Organization.getStartId())) {
-                    System.err.println("Error: Сan't update a non-existing element");
+                    System.err.println(commandsBundle.getString("command.err.non_existing_element"));
                     return;
                 }
 
                 Organization org = CreateNewElement.newElement();
                 App.collection.getData().set(id, org);
-                System.out.printf("Element with id %s was updated.\n", id);
+                System.out.printf(commandsBundle.getString("command.update.execute"), id);
             }
 
-        } else {System.err.println("Error: Collection is empty.");}
+        } else {System.err.println(commandsBundle.getString("command.err.empty"));}
     }
 
     

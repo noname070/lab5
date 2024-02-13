@@ -12,14 +12,14 @@ public class Filter {
     static public class FilterByAnnualTurnover extends Command {
 
         public FilterByAnnualTurnover() {
-            super("filter_greater_than_annual_turnover", "display elements where annualTurnover = param", true);
+            super("filter_greater_than_annual_turnover", commandsBundle.getString("command.filter_greater_than_annual_turnover.description"), true);
         }
 
         @Override
         public void execute(String[] args) {
             if (!App.collection.getData().isEmpty()) {
                 if (!StringUtils.isNumeric(args[1])) {
-                    System.err.println("Incorrect value.");
+                    System.err.println(commandsBundle.getString("command.err.incorrect_value"));
                     return;
                 }
 
@@ -33,11 +33,11 @@ public class Filter {
                     }
                 }
 
-                System.out.printf("Collection filtered by annualTurnover=%s :", args[1]);
+                System.out.printf(commandsBundle.getString("command.filter_greater_than_annual_turnover.execute"), args[1]);
                 localData.forEach(System.out::println);
 
             } else {
-                System.err.println("Error: Collection is empty.");
+                System.err.println(commandsBundle.getString("command.err.empty"));
             }
         }
 
@@ -53,7 +53,7 @@ public class Filter {
         public void execute(String[] args) {
             if (!App.collection.getData().isEmpty()) {
                 if (!StringUtils.isNumeric(args[1])) {
-                    System.err.println("Incorrect value.");
+                    System.err.println(commandsBundle.getString("command.err.incorrect_value"));
                     return;
                 }
                 float annualTurnover = Float.parseFloat(args[1]);
@@ -71,7 +71,7 @@ public class Filter {
                 localData.forEach(System.out::println);
 
             } else {
-                System.err.println("Error: Collection is empty.");
+                System.err.println(commandsBundle.getString("command.err.empty"));
             }
 
         }

@@ -9,14 +9,14 @@ import ru.noname07.lab5.collection.data.Organization;
 public class PrintField extends Command {
 
     public PrintField() {
-        super("print_field_ascending_official_address", "display officialAddress of all elements by ascending order",
+        super("print_field_ascending_official_address", commandsBundle.getString("command.print_field_ascending_official_address.description"),
                 false);
     }
 
     @Override
     public void execute() {
         if (!App.collection.getData().isEmpty()) {
-            System.out.println("Collection officialAddresses:");
+            System.out.println( commandsBundle.getString("command.print_field_ascending_official_address.execute"));
             ArrayList<String> addresses = new ArrayList<>();
             for (Organization org : App.collection.getData()) {
                 addresses.add(org.getAddress().getStreet());
@@ -26,7 +26,7 @@ public class PrintField extends Command {
             addresses.forEach(System.out::println);
 
         } else {
-            System.err.println("Error: Collection is empty.");
+            System.err.println( commandsBundle.getString("command.err.empty"));
         }
     }
 
