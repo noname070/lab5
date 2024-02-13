@@ -1,0 +1,10 @@
+info
+show
+sort
+execute_script src/main/resources/script2.txt
+show
+execute_script src/main/resources/script1.txt
+show
+info
+sort
+execute src/main/resources/script2.txt

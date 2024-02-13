@@ -1,35 +1,50 @@
 package ru.noname07.lab5.console;
 
 import java.util.Scanner;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
-import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.*;
 
 public class CreateNewElement {
-    public static Organization newElement() {
 
-        InputStream inputStream = App.console.getInputStream();
-        PrintStream printStream = App.console.getPrintStream();
+    public static Organization newElement() {
+        if (Console.getStackSize() == 1) {
+            return CreateNewElement.fromInput();
+        } else
+            return CreateNewElement.fromStack();
+    }
+
+    public static Organization fromStack() { // TODO mistakes??
+        Organization org = new Organization();
+        org.setName(Console.getLastCommandLine());
+        org.setCoordinates(new Coordinates(
+                Double.parseDouble(Console.getLastCommandLine()),
+                Float.parseFloat(Console.getLastCommandLine())));
+        org.setAnnualTurnover(Float.parseFloat(Console.getLastCommandLine()));
+        org.setEmployeesCount(Integer.parseInt(Console.getLastCommandLine()));
+        org.setType(OrganizationType.valueOf(Console.getLastCommandLine()));
+        org.setAddress(new Address(Console.getLastCommandLine()));
+        return org;
+    }
+
+    public static Organization fromInput() {
 
         Organization org = new Organization();
 
         String input = "";
 
-        printStream.println("Create new element `Organization`");
+        System.out.println("Create new element `Organization`");
         @SuppressWarnings("resource")
-        Scanner localScanner = new Scanner(inputStream);
+        Scanner localScanner = new Scanner(System.in);
 
         // Name
         String name = "";
         while (true) {
-            printStream.print(" name >");
+            System.out.print(" name >");
             name = localScanner.nextLine();
             if (!name.isEmpty() && StringUtils.isAlpha(name)) {
                 org.setName(name);
@@ -39,12 +54,12 @@ public class CreateNewElement {
 
         // Coordinates
         Coordinates coordinates = new Coordinates();
-        printStream.println("Create new element `Coordinates`");
+        System.out.println("Create new element `Coordinates`");
         while (true) {
-            printStream.print(" x >");
+            System.out.print(" x >");
             String x = localScanner.nextLine();
 
-            printStream.print(" y >");
+            System.out.print(" y >");
             String y = localScanner.nextLine();
 
             if (!x.isEmpty() && !y.isEmpty() && StringUtils.isNumeric(x.strip()) && StringUtils.isNumeric(y.strip())) {
@@ -56,12 +71,12 @@ public class CreateNewElement {
                 System.err.println("Incorrect input. Pls, nums only.");
             }
         }
-        printStream.println("New element `Coordinates` created.");
+        System.out.println("New element `Coordinates` created.");
         org.setCoordinates(coordinates);
 
         // annualTurnover
         while (true) {
-            printStream.print(" annualTurnover>");
+            System.out.print(" annualTurnover>");
             input = localScanner.nextLine();
             if (input.equals("")) {
                 // org.setAnnualTurnover(null);
@@ -77,7 +92,7 @@ public class CreateNewElement {
 
         // employeesCount
         while (true) {
-            printStream.print(" employeesCount>");
+            System.out.print(" employeesCount>");
             input = localScanner.nextLine();
             if (!input.equals("")) {
                 if (Integer.parseInt(input) <= 0) {
@@ -93,7 +108,7 @@ public class CreateNewElement {
 
         // type
         while (true) {
-            printStream.printf(" orgType [possible vals: %s] >",
+            System.out.printf(" orgType [possible vals: %s] >",
                     Arrays.stream(OrganizationType.values())
                             .map(v -> v.toString())
                             .collect(Collectors.joining(" ")));
@@ -114,9 +129,9 @@ public class CreateNewElement {
         input = "";
 
         // address
-        printStream.println("Create new element `Address`");
+        System.out.println("Create new element `Address`");
         while (true) {
-            printStream.print(" street >");
+            System.out.print(" street >");
             input = localScanner.nextLine();
             if (!input.isEmpty()) {
                 org.setAddress(new Address(input));

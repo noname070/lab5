@@ -5,11 +5,19 @@ import java.util.Scanner;
 import ru.noname07.lab5.collection.CollectionManager;
 import ru.noname07.lab5.console.Console;
 
+/*
+ * КЕШИРОВАТЬ КОМАНДЫ И ЗАПИСЫВАТЬ
+ * ВЫБОР ЯЗЫКА / ЛОКАЛИЗАЦИЯ
+ * ПОФИКСИТЬ КУЧУ С ФАЙЛАМИ ПОСЛЕ ИСПОЛНЕНИЯ ФУЛ СКРИПТА
+ * 
+ */
+
 public class App {
 
     public static String FILE_PATH;
     public static CollectionManager collection;
-    public static Console console = new Console(new Scanner(System.in), System.in, System.out);
+    public static Console console = new Console();
+    public static String toScriptSave = "";
 
     public static void main(String[] args) throws Exception {
         if (args.length > 0) {
@@ -20,10 +28,13 @@ public class App {
 
         collection = new CollectionManager();
         collection.loadData();
+        @SuppressWarnings("resource")
+        Scanner scanner = new Scanner(console.getInputStream());
 
         while (console.isWorking()) {
             System.out.print("|<lab5>| >");
-            console.processCommand();
+            Console.addCommand(scanner.nextLine());
+            console.processStack();
         }
     }
 

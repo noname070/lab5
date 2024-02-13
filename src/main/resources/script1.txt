@@ -8,4 +8,4 @@ ITMO
 235
 PUBLIC
 lomo9
-clear
+show
