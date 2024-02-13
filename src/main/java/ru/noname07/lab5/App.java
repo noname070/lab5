@@ -5,11 +5,8 @@ import java.util.Scanner;
 import ru.noname07.lab5.collection.CollectionManager;
 import ru.noname07.lab5.console.Console;
 
-/*
- * КЕШИРОВАТЬ КОМАНДЫ И ЗАПИСЫВАТЬ
+/* TODO
  * ВЫБОР ЯЗЫКА / ЛОКАЛИЗАЦИЯ
- * ПОФИКСИТЬ КУЧУ С ФАЙЛАМИ ПОСЛЕ ИСПОЛНЕНИЯ ФУЛ СКРИПТА
- * 
  */
 
 public class App {
