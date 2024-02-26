@@ -7,7 +7,7 @@ import ru.noname07.lab5.console.CreateNewElement;
 public class Add extends Command {
 
     public Add() {
-        super("add", commandsBundle.getString("command.add.description"), false);
+        super("add", App.generalBundle.getString("command.add.description"), false);
     }
 
     @Override
@@ -16,7 +16,7 @@ public class Add extends Command {
         if (element.isValid()) {
             App.collection.getData().add(element);
         } else {
-            System.err.println(commandsBundle.getString("command.err.invalid_element"));
+            System.err.println(App.generalBundle.getString("command.err.invalid_element"));
         }
     }
 

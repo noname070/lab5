@@ -5,13 +5,13 @@ import ru.noname07.lab5.App;
 public class Clear extends Command {
 
     public Clear() {
-        super("clear", Command.commandsBundle.getString("command.clear.description"), false);
+        super("clear", App.generalBundle.getString("command.clear.description"), false);
     }
 
     @Override
     public void execute() {
         App.collection.getData().clear();
-        System.out.println(Command.commandsBundle.getString("command.clear.execute"));
+        System.out.println(App.generalBundle.getString("command.clear.execute"));
     }
 
 }

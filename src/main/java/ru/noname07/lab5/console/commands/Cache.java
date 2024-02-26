@@ -15,13 +15,13 @@ public class Cache {
     public static class StartCache extends Command {
 
         public StartCache() {
-            super("start_cache", commandsBundle.getString("command.start_cache.description"), false);
+            super("start_cache", App.generalBundle.getString("command.start_cache.description"), false);
         }
 
         @Override
         public void execute() {
             App.toScriptSave = "src/main/resources/AppData/SAVED_SCRIPT.txt";
-            System.out.println(commandsBundle.getString("command.start_cache.execute"));
+            System.out.println(App.generalBundle.getString("command.start_cache.execute"));
         }
 
     }
@@ -29,14 +29,14 @@ public class Cache {
     public static class SaveCache extends Command {
 
         public SaveCache() {
-            super("save_cache", commandsBundle.getString("command.save_cache.description"), false);
+            super("save_cache", App.generalBundle.getString("command.save_cache.description"), false);
         }
 
         @Override
         public void execute() {
             if (!App.toScriptSave.equals("")) {
                 App.toScriptSave = "";
-                System.out.println(commandsBundle.getString("command.save_cache.execute") + App.toScriptSave);
+                System.out.println(App.generalBundle.getString("command.save_cache.execute") + App.toScriptSave);
             }
         }
 
@@ -52,14 +52,14 @@ public class Cache {
                         bOutputStream.close();
 
                     } catch (IOException e) {
-                        // System.err.println(commandsBundle.getString("command.err.incorrect_value"));
+                        // System.err.println(App.generalBundle.getString("command.err.incorrect_value"));
                         e.printStackTrace();
                     }
 
                     App.toScriptSave = "";
-                    System.out.println(commandsBundle.getString("command.save_cache.execute") + "resources/AppData/"+args[1]+".txt");
+                    System.out.println(App.generalBundle.getString("command.save_cache.execute") + "resources/AppData/"+args[1]+".txt");
                 } else
-                    System.err.println(commandsBundle.getString("command.err.incorrect_value"));
+                    System.err.println(App.generalBundle.getString("command.err.incorrect_value"));
             }
         }
 

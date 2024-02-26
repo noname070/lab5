@@ -1,14 +1,16 @@
 package ru.noname07.lab5.console.commands;
 
+import ru.noname07.lab5.App;
+
 public class Exit extends Command {
 
     public Exit() {
-        super("exit", commandsBundle.getString("command.exit.description"), false);
+        super("exit", App.generalBundle.getString("command.exit.description"), false);
     }
 
     @Override
     public void execute() {
-        System.out.println(commandsBundle.getString("command.exit.execute"));
+        System.out.println(App.generalBundle.getString("command.exit.message"));
         System.exit(0);
     }
 

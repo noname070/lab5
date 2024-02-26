@@ -14,17 +14,17 @@ public class Remove {
     public static class RemoveLast extends Command {
 
         public RemoveLast() {
-            super("remove_last", commandsBundle.getString("command.remove_last.description"), false);
+            super("remove_last", App.generalBundle.getString("command.remove_last.description"), false);
         }
 
         @Override
         public void execute() {
             if (!App.collection.getData().isEmpty()) {
                 Organization org = App.collection.getData().removeLast();
-                System.out.printf(commandsBundle.getString("command.remove_last.execute"),
+                System.out.printf(App.generalBundle.getString("command.remove_last.execute"),
                                     org.getName(), org.getId(), org.hashCode());
             } else {
-                System.err.println(commandsBundle.getString("command.err.empty"));
+                System.err.println(App.generalBundle.getString("command.err.empty"));
             }
         }
 
@@ -33,7 +33,7 @@ public class Remove {
     public static class RemoveGreater extends Command {
 
         public RemoveGreater() {
-            super("remove_greater", commandsBundle.getString("command.remove_greater.description"), true);
+            super("remove_greater", App.generalBundle.getString("command.remove_greater.description"), true);
         }
 
         @Override
@@ -56,12 +56,12 @@ public class Remove {
                     if (idxsToRemove.contains(org.getId())) {
                         iter.remove();
 
-                        System.out.printf(commandsBundle.getString("command.remove_greater.execute"),
+                        System.out.printf(App.generalBundle.getString("command.remove_greater.execute"),
                                 org.getName(), org.getId(), org.hashCode());
                     }
                 }
             } else {
-                System.err.println(commandsBundle.getString("command.err.empty"));
+                System.err.println(App.generalBundle.getString("command.err.empty"));
             }
         }
 
@@ -70,7 +70,7 @@ public class Remove {
     public static class RemoveById extends Command {
 
         public RemoveById() {
-            super("remove_by_id", commandsBundle.getString("command.remove_by_id.description"), true);
+            super("remove_by_id", App.generalBundle.getString("command.remove_by_id.description"), true);
         }
 
         @Override
@@ -85,7 +85,7 @@ public class Remove {
                     if (org.getId().equals(id)) {
                         iter.remove();
 
-                        System.out.printf(commandsBundle.getString("command.remove_by_id.execute"),
+                        System.out.printf(App.generalBundle.getString("command.remove_by_id.execute")+"\n",
                                 org.getName(), org.getId(), org.hashCode());
                         break;
                     }

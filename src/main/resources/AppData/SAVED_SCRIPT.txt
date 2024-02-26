@@ -1,0 +1,4 @@
+start_cache
+shpw
+show
+filter_greater_than_annual_turnover 0.2

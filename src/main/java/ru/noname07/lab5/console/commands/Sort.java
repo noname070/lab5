@@ -8,7 +8,7 @@ import ru.noname07.lab5.collection.data.Organization;
 public class Sort extends Command {
 
     public Sort() {
-        super("sort", commandsBundle.getString("command.sort.description"), false);
+        super("sort", App.generalBundle.getString("command.sort.description"), false);
     }
 
     @Override
@@ -27,9 +27,10 @@ public class Sort extends Command {
 
                 data.set(j + 1, key);
             }
-            System.out.println(commandsBundle.getString("command.sort.execute"));
+
+            System.out.println(App.generalBundle.getString("command.sort.execute"));
         } else {
-            System.err.println(commandsBundle.getString("command.err.empty"));
+            System.err.println(App.generalBundle.getString("command.err.empty"));
         }
     }
 

@@ -22,9 +22,13 @@ public class CollectionManager {
         String rawData;
         int maxId = 0;
         try {
+            if (!IOManager.checkFile(App.FILE_PATH)) {
+                System.err.println(App.generalBundle.getString("cm.err.cant_io") + "\""+App.FILE_PATH+"\" ");
+                System.exit(-1);
+            }
             rawData = IOManager.readFromFile(App.FILE_PATH);
             if (rawData.isEmpty()) {
-                System.err.println(String.format("File %s is empty, no data loaded.", App.FILE_PATH));
+                System.err.println(String.format(App.generalBundle.getString("cm.err.empty"), App.FILE_PATH));
             } else {
                 data = new ExperementalSerializer().deserialize(rawData);
                 // id numeration fix
@@ -33,12 +37,12 @@ public class CollectionManager {
                 }
                 Organization.setStartId(maxId);
 
-                System.out.println(String.format("Data from %s was loaded", App.FILE_PATH));
+                System.out.println(String.format(App.generalBundle.getString("cm.data.from_loaded"), App.FILE_PATH));
             }
 
         } catch (IOException e) {
-            System.err.println("Can`t i/o with file in " + App.FILE_PATH );
-            e.printStackTrace();
+            System.err.println(App.generalBundle.getString("cm.err.cant_io") + " \"" + App.FILE_PATH + "\"" );
+            System.exit(-1);
         }
 
     }
@@ -48,7 +52,7 @@ public class CollectionManager {
             String rawData = new ExperementalSerializer().serialize(data);
             IOManager.writeToFile(App.FILE_PATH, rawData);
         } catch (IOException e) {
-            System.err.println("Can`t i/o with file in " + App.FILE_PATH );
+            System.err.println(App.generalBundle.getString("cm.err.cant_io") + App.FILE_PATH );
             e.printStackTrace();
         }
 

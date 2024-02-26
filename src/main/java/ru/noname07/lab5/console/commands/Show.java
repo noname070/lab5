@@ -6,7 +6,7 @@ import ru.noname07.lab5.collection.data.Organization;
 public class Show extends Command {
 
     public Show() {
-        super("show", Command.commandsBundle.getString("command.show.description"), false);
+        super("show", App.generalBundle.getString("command.show.description"), false);
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Show extends Command {
             for (Organization org : App.collection.getData()) {
                 System.out.println(org);
             }
-        } else {System.err.println(Command.commandsBundle.getString("command.err.empty"));}
+        } else {System.err.println(App.generalBundle.getString("command.err.empty"));}
     }
 
     

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.StringUtils;
 
+import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.*;
 
 public class CreateNewElement {
@@ -37,14 +38,14 @@ public class CreateNewElement {
 
         String input = "";
 
-        System.out.println("Create new element `Organization`");
+        System.out.println(App.generalBundle.getString("create.organization.new_element"));
         @SuppressWarnings("resource")
         Scanner localScanner = new Scanner(System.in);
 
         // Name
         String name = "";
         while (true) {
-            System.out.print(" name >");
+            System.out.print(App.generalBundle.getString("create.organization.name"));
             name = localScanner.nextLine();
             if (!name.isEmpty() && StringUtils.isAlpha(name)) {
                 org.setName(name);
@@ -54,12 +55,13 @@ public class CreateNewElement {
 
         // Coordinates
         Coordinates coordinates = new Coordinates();
-        System.out.println("Create new element `Coordinates`");
+        System.out.println(App.generalBundle.getString("create.coordinates.new_element"));
+
         while (true) {
-            System.out.print(" x >");
+            System.out.print(App.generalBundle.getString("create.coordinates.x") + " >");
             String x = localScanner.nextLine();
 
-            System.out.print(" y >");
+            System.out.print(App.generalBundle.getString("create.coordinates.y") + " >");
             String y = localScanner.nextLine();
 
             if (!x.isEmpty() && !y.isEmpty() && StringUtils.isNumeric(x.strip()) && StringUtils.isNumeric(y.strip())) {
@@ -68,10 +70,10 @@ public class CreateNewElement {
 
                 break;
             } else {
-                System.err.println("Incorrect input. Pls, nums only.");
+                System.err.println(App.generalBundle.getString("create.err.nums_only"));
             }
         }
-        System.out.println("New element `Coordinates` created.");
+        System.err.println(App.generalBundle.getString("create.coordinates.complete"));
         org.setCoordinates(coordinates);
 
         // annualTurnover
@@ -85,7 +87,7 @@ public class CreateNewElement {
                 org.setAnnualTurnover(Float.parseFloat(input));
                 break;
             } else {
-                System.err.println("Incorrect value");
+                System.err.println(App.generalBundle.getString("create.err.incorrect_value"));
             }
         }
         input = "";
@@ -96,7 +98,7 @@ public class CreateNewElement {
             input = localScanner.nextLine();
             if (!input.equals("")) {
                 if (Integer.parseInt(input) <= 0) {
-                    System.err.println("Value must be > 0");
+                    System.err.println(App.generalBundle.getString("create.err.value_greater_than_zero"));
                     continue;
                 } else {
                     org.setEmployeesCount(Integer.parseInt(input));
@@ -108,7 +110,7 @@ public class CreateNewElement {
 
         // type
         while (true) {
-            System.out.printf(" orgType [possible vals: %s] >",
+            System.out.printf(App.generalBundle.getString("create.organization.orgType"),
                     Arrays.stream(OrganizationType.values())
                             .map(v -> v.toString())
                             .collect(Collectors.joining(" ")));
@@ -123,21 +125,22 @@ public class CreateNewElement {
                 break;
 
             } else {
-                System.err.println("Incorrect type.");
+                System.err.println(App.generalBundle.getString("create.err.incorrect_type"));
             }
         }
         input = "";
 
         // address
-        System.out.println("Create new element `Address`");
+        System.out.println(App.generalBundle.getString("create.address.new_element"));
         while (true) {
-            System.out.print(" street >");
+            System.out.print(App.generalBundle.getString("create.address.street") + " >");
             input = localScanner.nextLine();
             if (!input.isEmpty()) {
                 org.setAddress(new Address(input));
                 break;
             }
         }
+        System.out.println(App.generalBundle.getString("create.address.complete"));
 
         return org;
     }

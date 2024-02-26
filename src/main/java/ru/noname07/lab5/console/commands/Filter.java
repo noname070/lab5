@@ -12,14 +12,14 @@ public class Filter {
     static public class FilterByAnnualTurnover extends Command {
 
         public FilterByAnnualTurnover() {
-            super("filter_greater_than_annual_turnover", commandsBundle.getString("command.filter_greater_than_annual_turnover.description"), true);
+            super("filter_greater_than_annual_turnover", App.generalBundle.getString("command.filter_greater_than_annual_turnover.description"), true);
         }
 
         @Override
         public void execute(String[] args) {
             if (!App.collection.getData().isEmpty()) {
-                if (!StringUtils.isNumeric(args[1])) {
-                    System.err.println(commandsBundle.getString("command.err.incorrect_value"));
+                if (!StringUtils.isNumeric(args[1].replace(".", ""))) {
+                    System.err.println(App.generalBundle.getString("command.err.incorrect_value"));
                     return;
                 }
 
@@ -33,11 +33,11 @@ public class Filter {
                     }
                 }
 
-                System.out.printf(commandsBundle.getString("command.filter_greater_than_annual_turnover.execute"), args[1]);
+                System.out.printf(App.generalBundle.getString("command.filter_greater_than_annual_turnover.execute"), args[1]);
                 localData.forEach(System.out::println);
 
             } else {
-                System.err.println(commandsBundle.getString("command.err.empty"));
+                System.err.println(App.generalBundle.getString("command.err.empty"));
             }
         }
 
@@ -46,14 +46,14 @@ public class Filter {
     static public class FilterByGreaterThanAnnualTurnover extends Command {
 
         public FilterByGreaterThanAnnualTurnover() {
-            super("filter_greater_than_annual_turnover", "display elements where annualTurnover >= param", true);
+            super("filter_greater_than_annual_turnover", App.generalBundle.getString("command.filter_greater_than_annual_turnover.description"), true);
         }
 
         @Override
         public void execute(String[] args) {
             if (!App.collection.getData().isEmpty()) {
                 if (!StringUtils.isNumeric(args[1])) {
-                    System.err.println(commandsBundle.getString("command.err.incorrect_value"));
+                    System.err.println(App.generalBundle.getString("command.err.incorrect_value"));
                     return;
                 }
                 float annualTurnover = Float.parseFloat(args[1]);
@@ -71,7 +71,7 @@ public class Filter {
                 localData.forEach(System.out::println);
 
             } else {
-                System.err.println(commandsBundle.getString("command.err.empty"));
+                System.err.println(App.generalBundle.getString("command.err.empty"));
             }
 
         }

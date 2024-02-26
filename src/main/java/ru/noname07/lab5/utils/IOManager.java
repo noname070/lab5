@@ -4,7 +4,10 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
+
+// import java.nio.file.Files;
 
 public class IOManager {
 
@@ -30,6 +33,11 @@ public class IOManager {
             bInputStream.close();
             return new String(bytes);
         }
+    }
+
+    public static boolean checkFile(String pathString) {
+        File f = new File(pathString);
+        return f.canRead() & f.canWrite() & f.isFile() & f.exists();
     }
 
 }
