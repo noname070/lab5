@@ -30,8 +30,20 @@ public class CollectionManager {
             if (rawData.isEmpty()) {
                 System.err.println(String.format(App.generalBundle.getString("cm.err.empty"), App.FILE_PATH));
             } else {
-                data = new ExperementalSerializer().deserialize(rawData);
+                try {
+                    data = new ExperementalSerializer().deserialize(rawData);
+                } catch ( com.thoughtworks.xstream.converters.ConversionException e) {
+                    System.err.println("Oops i got errors by xml convertor");
+                }
                 // id numeration fix
+
+                for (Organization org : data) {
+                    if (!org.isValid()) {
+                        System.out.println(App.generalBundle.getString("cm.err.load_invalid"));
+                        data.remove(org);
+                    }
+                }
+
                 for (Organization org : data) {
                     maxId = Math.max(org.getId(), maxId);
                 }

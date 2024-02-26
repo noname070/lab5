@@ -13,6 +13,7 @@ import ru.noname07.lab5.console.Console;
  * 2 arg    :   1arg = path2data 2arg=lang
  */
 
+
 public class App {
 
     public static Locale currentLocale = new Locale("ru_RU");
@@ -22,7 +23,6 @@ public class App {
     public static ResourceBundle generalBundle = ResourceBundle.getBundle("l18n/GeneralBundle", App.currentLocale);
 
     public static Console console = new Console();
-
     public static void main(String[] args) throws Exception {
 
         if (args.length == 1) {

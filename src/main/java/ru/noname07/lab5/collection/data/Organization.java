@@ -2,6 +2,8 @@ package ru.noname07.lab5.collection.data;
 
 import java.time.LocalDate;
 
+
+import java.util.Arrays;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import ru.noname07.lab5.collection.Valid;
@@ -127,7 +129,7 @@ public class Organization implements Valid, Comparable<Organization> {
         if (this.annualTurnover != null) {
             if (this.annualTurnover < 0) return false;
         }
-        if (this.type == null)
+        if (this.type == null || !Arrays.asList(OrganizationType.values()).contains(this.type) )
             return false;
         if (this.officialAddress == null || !this.officialAddress.isValid())
             return false;

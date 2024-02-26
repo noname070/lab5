@@ -14,7 +14,8 @@ public class Add extends Command {
     public void execute() {
         Organization element = CreateNewElement.newElement();
         if (element.isValid()) {
-            App.collection.getData().add(element);
+            // App.collection.getData().add(element);
+            App.collection.getData().add(element.getId(), element);
         } else {
             System.err.println(App.generalBundle.getString("command.err.invalid_element"));
         }

@@ -25,7 +25,7 @@ public class ExecureScript extends Command {
     public void execute(String[] args) { // 10 iq realisaiton
         File file = new File(args[1]);
         if (!file.exists()) {
-            System.err.println(App.generalBundle.getString("command.err.file_not_exists"));
+            System.err.println(App.generalBundle.getString("command.err.file_not_exist"));
             return;
         }
         if (filesToExecute.contains(file.getAbsolutePath())) {

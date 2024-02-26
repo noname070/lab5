@@ -13,13 +13,13 @@ import ru.noname07.lab5.collection.data.*;
 public class CreateNewElement {
 
     public static Organization newElement() {
-        if (Console.getStackSize() == 1) {
+        if (Console.getStackSize() == 0) {
             return CreateNewElement.fromInput();
         } else
             return CreateNewElement.fromStack();
     }
 
-    public static Organization fromStack() { // TODO mistakes??
+    public static Organization fromStack() {
         Organization org = new Organization();
         org.setName(Console.getLastCommandLine());
         org.setCoordinates(new Coordinates(
@@ -29,7 +29,13 @@ public class CreateNewElement {
         org.setEmployeesCount(Integer.parseInt(Console.getLastCommandLine()));
         org.setType(OrganizationType.valueOf(Console.getLastCommandLine()));
         org.setAddress(new Address(Console.getLastCommandLine()));
-        return org;
+        if (org.isValid()) {
+            return org;
+        } else {
+            System.err.println(App.generalBundle.getString("create.err.incorrect_value"));
+            System.exit(-1);
+            return null; // for vscode
+        }
     }
 
     public static Organization fromInput() {
@@ -45,7 +51,7 @@ public class CreateNewElement {
         // Name
         String name = "";
         while (true) {
-            System.out.print(App.generalBundle.getString("create.organization.name"));
+            System.out.print(App.generalBundle.getString("create.organization.name") + " >");
             name = localScanner.nextLine();
             if (!name.isEmpty() && StringUtils.isAlpha(name)) {
                 org.setName(name);
@@ -96,7 +102,7 @@ public class CreateNewElement {
         while (true) {
             System.out.print(" employeesCount>");
             input = localScanner.nextLine();
-            if (!input.equals("")) {
+            if (!input.equals("") & StringUtils.isNumeric(input)) {
                 if (Integer.parseInt(input) <= 0) {
                     System.err.println(App.generalBundle.getString("create.err.value_greater_than_zero"));
                     continue;
@@ -110,7 +116,7 @@ public class CreateNewElement {
 
         // type
         while (true) {
-            System.out.printf(App.generalBundle.getString("create.organization.orgType"),
+            System.out.printf(App.generalBundle.getString("create.organization.orgType") + " >",
                     Arrays.stream(OrganizationType.values())
                             .map(v -> v.toString())
                             .collect(Collectors.joining(" ")));

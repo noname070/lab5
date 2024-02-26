@@ -17,8 +17,8 @@ public class Update extends Command {
     public void execute(String[] args) {
         if (!App.collection.getData().isEmpty()) {
 
-            if (StringUtils.isNumeric(args[0])) {
-                int id = Integer.parseInt(args[0]);
+            if (StringUtils.isNumeric(args[1])) {
+                int id = Integer.parseInt(args[1]);
                 if (!(id < Organization.getStartId())) {
                     System.err.println(App.generalBundle.getString("command.err.non_existing_element"));
                     return;

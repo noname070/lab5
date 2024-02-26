@@ -1,14 +1,14 @@
 <linked-list>
   <organization>
     <id>1</id>
-    <name>ITMO</name>
+    <name>AWDAW</name>
     <coordinates>
       <x>23.0</x>
       <y>234.0</y>
     </coordinates>
     <creationDate>2024-02-12</creationDate>
     <employeesCount>2342</employeesCount>
-    <type>GOVERNMENT</type>
+    <type>PUBLIC</type>
     <officialAddress>
       <street>loomo 9</street>
     </officialAddress>
