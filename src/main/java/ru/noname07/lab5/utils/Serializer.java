@@ -11,6 +11,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+/**
+ * Old serializer based on {@link javax.xml.bind.JAXB}
+ * actually not used
+ */
 public class Serializer {
     private JAXBContext jaxbContext;
     private Marshaller marshaller;

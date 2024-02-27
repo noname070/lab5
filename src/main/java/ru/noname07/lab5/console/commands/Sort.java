@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 
+/**
+ * Realisation for "sort" command
+ * @see Command
+ */
 public class Sort extends Command {
 
     public Sort() {

@@ -5,17 +5,31 @@ import java.util.Arrays;
 
 import ru.noname07.lab5.App;
 
+/**
+ * command implementation super-class
+ * one of the execute methods must be overridden
+ * @see ICommand
+ */
 public abstract class Command implements ICommand {
     private String name;
     private String description;
     private boolean needArgs = false;
 
+    /**
+     * Common constructor
+     * @param name : command name
+     * @param description : command description
+     * @param needArgs : flag, command need args? true : fale
+     */
     public Command(String name, String description, boolean needArgs) {
         this.name = name;
         this.description = description;
         this.needArgs = needArgs;
     }
 
+    /**
+     * common execute without args
+     */
     public void execute() {
         if (!this.needArgs) {
             System.out.println(App.generalBundle.getString("command.command.execute") + this.getClass().getName());
@@ -24,6 +38,9 @@ public abstract class Command implements ICommand {
         }
     }
 
+    /**
+     * common execute with args
+     */
     public void execute(String[] args) {
         if (this.needArgs) {
             ArrayList<String> localArgs = new ArrayList<String>();
@@ -39,10 +56,19 @@ public abstract class Command implements ICommand {
         }
     }
 
+    /**
+     * get command name
+     * @return command name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * get command description
+     * @return command description
+     * @see Help
+     */
     public String getDescription() {
         return this.description;
     }

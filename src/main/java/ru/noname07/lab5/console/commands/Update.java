@@ -7,6 +7,10 @@ import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 import ru.noname07.lab5.console.CreateNewElement;
 
+/**
+ * Realisation for "update" command
+ * @see Command
+ */
 public class Update extends Command {
 
     public Update() {

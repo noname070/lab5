@@ -9,8 +9,19 @@ import java.io.FileOutputStream;
 
 // import java.nio.file.Files;
 
+/**
+ * file i/o manager
+ */
 public class IOManager {
 
+    /**
+     * write raw data to file
+     *
+     * @param filePath : path2file
+     * @param rawData  : data to write
+     * 
+     * @throws IOException
+     */
     public static void writeToFile(String filePath, String rawData) throws IOException {
         try (BufferedOutputStream bOutputStream = new BufferedOutputStream(new FileOutputStream(filePath))) {
             byte[] bytes = rawData.getBytes();
@@ -19,6 +30,14 @@ public class IOManager {
         }
     }
 
+    /**
+     * add raw data to file
+     *
+     * @param filePath : path2file
+     * @param rawData  : data to add
+     * 
+     * @throws IOException
+     */
     public static void addToFile(String filePath, String rawData) throws IOException {
         try (BufferedOutputStream bOutputStream = new BufferedOutputStream(new FileOutputStream(filePath, true))) {
             byte[] bytes = (rawData + "\n").getBytes();
@@ -27,6 +46,12 @@ public class IOManager {
         }
     }
 
+    /**
+     * read raw data to file
+     *
+     * @param filePath : path2file
+     * @throws IOException
+     */
     public static String readFromFile(String filePath) throws IOException {
         try (BufferedInputStream bInputStream = new BufferedInputStream(new FileInputStream(filePath))) {
             byte[] bytes = bInputStream.readAllBytes();
@@ -35,8 +60,13 @@ public class IOManager {
         }
     }
 
-    public static boolean checkFile(String pathString) {
-        File f = new File(pathString);
+    /**
+     * checks the file for accessibility
+     *
+     * @param filePath : path2file
+     */
+    public static boolean checkFile(String filePath) {
+        File f = new File(filePath);
         return f.canRead() & f.canWrite() & f.isFile() & f.exists();
     }
 

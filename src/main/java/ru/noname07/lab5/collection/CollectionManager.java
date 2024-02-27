@@ -3,27 +3,39 @@ package ru.noname07.lab5.collection;
 import java.io.IOException;
 import java.util.LinkedList;
 
-// import javax.xml.bind.JAXBException;
-
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 import ru.noname07.lab5.utils.ExperementalSerializer;
 import ru.noname07.lab5.utils.IOManager;
-// import ru.noname07.lab5.utils.Serializer;
 
+/**
+ * Class-container to manage collection
+ * 
+ * @see Organization
+ */
 public class CollectionManager {
     private LinkedList<Organization> data = new LinkedList<Organization>();
 
+    /**
+     * @return collection data
+     * @see Organization
+     */
     public LinkedList<Organization> getData() {
         return data;
     }
 
+    /**
+     * loads data from file
+     * 
+     * @see IOManager
+     * @see ExperementalSerializer
+     */
     public void loadData() {
         String rawData;
         int maxId = 0;
         try {
             if (!IOManager.checkFile(App.FILE_PATH)) {
-                System.err.println(App.generalBundle.getString("cm.err.cant_io") + "\""+App.FILE_PATH+"\" ");
+                System.err.println(App.generalBundle.getString("cm.err.cant_io") + "\"" + App.FILE_PATH + "\" ");
                 System.exit(-1);
             }
             rawData = IOManager.readFromFile(App.FILE_PATH);
@@ -32,7 +44,7 @@ public class CollectionManager {
             } else {
                 try {
                     data = new ExperementalSerializer().deserialize(rawData);
-                } catch ( com.thoughtworks.xstream.converters.ConversionException e) {
+                } catch (com.thoughtworks.xstream.converters.ConversionException e) {
                     System.err.println("Oops i got errors by xml convertor");
                 }
                 // id numeration fix
@@ -53,18 +65,24 @@ public class CollectionManager {
             }
 
         } catch (IOException e) {
-            System.err.println(App.generalBundle.getString("cm.err.cant_io") + " \"" + App.FILE_PATH + "\"" );
+            System.err.println(App.generalBundle.getString("cm.err.cant_io") + " \"" + App.FILE_PATH + "\"");
             System.exit(-1);
         }
 
     }
 
+    /**
+     * save data to file
+     * 
+     * @see IOManager
+     * @see ExperementalSerializer
+     */
     public void saveData() {
         try {
             String rawData = new ExperementalSerializer().serialize(data);
             IOManager.writeToFile(App.FILE_PATH, rawData);
         } catch (IOException e) {
-            System.err.println(App.generalBundle.getString("cm.err.cant_io") + App.FILE_PATH );
+            System.err.println(App.generalBundle.getString("cm.err.cant_io") + App.FILE_PATH);
             e.printStackTrace();
         }
 

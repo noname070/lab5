@@ -10,8 +10,16 @@ import org.apache.commons.lang3.StringUtils;
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.*;
 
+/**
+ * Manager for new elements
+ */
 public class CreateNewElement {
 
+    /**
+     * run new element builder
+     * if {@link Console#getStackSize} empty (means that commands are processed from the incoming stream) : build step-by-step from incomming stream
+     * else : process stack to load data
+     */
     public static Organization newElement() {
         if (Console.getStackSize() == 0) {
             return CreateNewElement.fromInput();
@@ -19,7 +27,11 @@ public class CreateNewElement {
             return CreateNewElement.fromStack();
     }
 
-    public static Organization fromStack() {
+    /**
+     * bully loads data from stack
+     * @see {@link CreateNewElement#newElement}
+     */
+    public static Organization fromStack() { // warning : if stack is not full - runtime error; recomend : redirect the stream to .fromInput(), thereby saving checks
         Organization org = new Organization();
         org.setName(Console.getLastCommandLine());
         org.setCoordinates(new Coordinates(
@@ -38,6 +50,10 @@ public class CreateNewElement {
         }
     }
 
+    /**
+     * loads data from console input stream, with all checkings
+     * @see {@link CreateNewElement#newElement}
+     */
     public static Organization fromInput() {
 
         Organization org = new Organization();

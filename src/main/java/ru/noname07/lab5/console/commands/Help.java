@@ -2,6 +2,10 @@ package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.App;
 
+/**
+ * Realisation for "help" command
+ * @see Command
+ */
 public class Help extends Command {
 
     public Help() {

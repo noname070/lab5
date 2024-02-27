@@ -4,6 +4,10 @@ import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 import ru.noname07.lab5.console.CreateNewElement;
 
+/**
+ * Realisation for "add" command
+ * @see Command
+ */ 
 public class Add extends Command {
 
     public Add() {

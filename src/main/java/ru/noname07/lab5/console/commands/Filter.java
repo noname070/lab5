@@ -7,12 +7,21 @@ import java.util.ArrayList;
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 
+/**
+ * Wrapper class for filer-like commands
+ * @see Command
+ */
 public class Filter {
 
+    /**
+     * Realisation for "filter_by_annual_turnover" command
+     * @see Command
+     * @see Filter
+     */
     static public class FilterByAnnualTurnover extends Command {
 
         public FilterByAnnualTurnover() {
-            super("filter_greater_than_annual_turnover", App.generalBundle.getString("command.filter_greater_than_annual_turnover.description"), true);
+            super("filter_by_annual_turnover", App.generalBundle.getString("command.filter_by_annual_turnover.description"), true);
         }
 
         @Override
@@ -43,6 +52,11 @@ public class Filter {
 
     }
 
+    /**
+     * Realisation for "filter_greater_than_annual_turnover" command
+     * @see Command
+     * @see Filter
+     */
     static public class FilterByGreaterThanAnnualTurnover extends Command {
 
         public FilterByGreaterThanAnnualTurnover() {

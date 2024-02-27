@@ -8,8 +8,15 @@ import ru.noname07.lab5.console.Console;
 import java.io.File;
 import java.io.FileInputStream;
 
+/**
+ * Realisation for "execute_script" command
+ * @see Command
+ */
 public class ExecureScript extends Command {
 
+    /**
+     * stores executable scripts. needed to prevent recursion
+     */
     private static HashSet<String> filesToExecute = new HashSet<String>();
 
     public ExecureScript() {
@@ -17,6 +24,11 @@ public class ExecureScript extends Command {
 
     }
 
+    /**
+     * part of the recursion prevention mechanism.
+     * @param filePath : absolute path to the executable file
+     * @apiNote use only after executed sxript ends
+     */
     public static void removeFileFromSet(String filePath) {
         filesToExecute.remove(filePath);
     }

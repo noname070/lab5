@@ -10,9 +10,13 @@ import ru.noname07.lab5.App;
 import ru.noname07.lab5.console.commands.*;
 import ru.noname07.lab5.utils.IOManager;
 
+/**
+ * Console
+ * processes a sequence of commands
+ */
 public class Console {
     private static final HashMap<String, Command> commandList = new HashMap<String, Command>();
-    private boolean isWorking = true;
+    // private boolean isWorking = true;
     private InputStream inputStream;
     private PrintStream printStream;
 
@@ -40,58 +44,95 @@ public class Console {
         commandList.put("save_cache", new Cache.SaveCache());
     }
 
+    /**
+     * Constructor if needs use not stn in/out
+     */
     public Console(InputStream inputStream, PrintStream printStream) {
         this.inputStream = inputStream;
         this.printStream = printStream;
     }
 
+    /**
+     * Common constructor with std in&out
+     */
     public Console() {
         this.inputStream = System.in;
         this.printStream = System.out;
     }
 
+    /**
+     * get command list
+     * 
+     * @return command list
+     */
     public HashMap<String, Command> getCommandList() {
         return Console.commandList;
     }
 
+    /**
+     * get console installed input stream
+     * 
+     * @return console input stream
+     */
     public InputStream getInputStream() {
         return this.inputStream;
     }
 
+    /**
+     * get console installed pring stream
+     * 
+     * @return console print stream
+     */
     public PrintStream getPrintStream() {
         return this.printStream;
     }
 
+    /**
+     * there should be logic for managing
+     * the console status, but it is not used anywhere (
+     */
+
+    /**
+     * get&remove last command line from the stack
+     * 
+     * @return command line
+     */
     public static String getLastCommandLine() {
         return Console.commandLines.removeLast();
     }
 
-    public boolean isWorking() {
-        return this.isWorking;
-    }
-
-    public void setWork() {
-        this.isWorking = true;
-    }
-
+    /**
+     * add command line to stack as First-Input
+     * @param inputLine : input line
+     */
     public static void addCommand(String inputLine) {
         Console.commandLines.addFirst(inputLine);
     }
 
+    /**
+     * add command line to stack as Last-Input
+     * @param lastLine : input line
+     */
     public static void addLast(String lastLine) {
         Console.commandLines.addLast(lastLine);
     }
 
+    /**
+     * @return stack size
+     */
     public static int getStackSize() {
         return Console.commandLines.size();
     }
 
+    /**
+     * processing command lines stack, while not empty
+     */
     public void processStack() {
         while (!Console.commandLines.isEmpty()) {
             String inputLine = Console.commandLines.removeLast();
             String input[] = inputLine.split(" ");
 
-            // dev
+            // dev only
             if (input[0].equals("clFileHeap")) {
                 ExecureScript.removeFileFromSet(input[1]);
                 return;

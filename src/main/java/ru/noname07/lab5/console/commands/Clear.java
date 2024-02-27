@@ -2,6 +2,10 @@ package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.App;
 
+/**
+ * Realisation for "clear" command
+ * @see Command
+ */ 
 public class Clear extends Command {
 
     public Clear() {

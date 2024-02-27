@@ -3,6 +3,10 @@ package ru.noname07.lab5.console.commands;
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 
+/**
+ * Realisation for "show" command
+ * @see Command
+ */
 public class Show extends Command {
 
     public Show() {

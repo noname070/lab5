@@ -10,8 +10,17 @@ import org.apache.commons.lang3.StringUtils;
 
 import ru.noname07.lab5.App;
 
+/**
+ * Wrapper class for cache-like commands
+ * @see Command
+ */
 public class Cache {
 
+    /**
+     * Realisation for "start_cache" command
+     * @see Command
+     * @see Cache
+     */ 
     public static class StartCache extends Command {
 
         public StartCache() {
@@ -26,6 +35,11 @@ public class Cache {
 
     }
 
+    /**
+     * Realisation for "save_cache" command
+     * @see Command
+     * @see Cache
+     */ 
     public static class SaveCache extends Command {
 
         public SaveCache() {

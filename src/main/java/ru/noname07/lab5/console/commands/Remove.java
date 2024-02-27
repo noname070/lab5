@@ -9,8 +9,17 @@ import java.util.stream.IntStream;
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 
+/**
+ * Wrapper class for remove-like commands
+ * @see Command
+ */
 public class Remove {
 
+    /**
+     * Realisation for "remove_last" command
+     * @see Command
+     * @see Remove
+     */
     public static class RemoveLast extends Command {
 
         public RemoveLast() {
@@ -30,6 +39,11 @@ public class Remove {
 
     }
 
+    /**
+     * Realisation for "remove_greater" command
+     * @see Command
+     * @see Remove
+     */
     public static class RemoveGreater extends Command {
 
         public RemoveGreater() {
@@ -67,6 +81,11 @@ public class Remove {
 
     }
 
+    /**
+     * Realisation for "remove_by_id" command
+     * @see Command
+     * @see Remove
+     */
     public static class RemoveById extends Command {
 
         public RemoveById() {

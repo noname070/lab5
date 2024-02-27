@@ -6,6 +6,10 @@ import java.util.Collections;
 import ru.noname07.lab5.App;
 import ru.noname07.lab5.collection.data.Organization;
 
+/**
+ * Realisation for "print_field_ascending_official_address" command
+ * @see Command
+ */
 public class PrintField extends Command {
 
     public PrintField() {

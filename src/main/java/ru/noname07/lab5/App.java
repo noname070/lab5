@@ -40,7 +40,7 @@ public class App {
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(console.getInputStream());
 
-        while (console.isWorking()) {
+        while (true) {
             try {
                 System.out.print("|<lab5>| >");
                 Console.addCommand(scanner.nextLine());

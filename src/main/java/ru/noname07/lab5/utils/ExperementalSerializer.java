@@ -11,10 +11,16 @@ import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
-
+/**
+ * ExperementalSerializer for LinkedList <-> xml
+ * @see Organization
+ */
 public class ExperementalSerializer {
     private final XStream xstream;
 
+    /**
+     * Common constructor to i/o with {@link Organization}
+     */
     public ExperementalSerializer() {
         xstream = new XStream();
 
@@ -35,11 +41,22 @@ public class ExperementalSerializer {
     
     }
     
+    /**
+     * serialize LinkedList {@link Organization} collection to xml
+     * 
+     * @param data : current collection
+     * @return rawData : record-ready string
+     */
     public String serialize(LinkedList<Organization> data) {
         String rawData = xstream.toXML(data);
         return rawData;
     }
     
+    /**
+     * deserialize xml to LinkedList {@link Organization} collection
+     * 
+     * @param rawData : raw string from xml file
+     */
     public LinkedList<Organization> deserialize(String rawData) {
         xstream.setMode(XStream.NO_REFERENCES);
         xstream.addPermission(NoTypePermission.NONE);

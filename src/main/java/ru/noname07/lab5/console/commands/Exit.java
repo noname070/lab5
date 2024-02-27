@@ -2,6 +2,10 @@ package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.App;
 
+/**
+ * Realisation for "exit" command
+ * @see Command
+ */
 public class Exit extends Command {
 
     public Exit() {

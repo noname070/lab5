@@ -2,6 +2,10 @@ package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.App;
 
+/**
+ * Realisation for "save" command
+ * @see Command
+ */
 public class Save extends Command {
 
     public Save() {
