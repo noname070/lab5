@@ -15,7 +15,7 @@ public class Help extends Command {
     @Override
     public void execute() {
         for (Command command : App.console.getCommandList().values()) {
-            System.out.printf("%-40s\t:\t%s %n \n", command.getName(), command.getDescription());
+            System.out.printf("%-40s\t:\t%s %n", command.getName(), command.getDescription());
         }
     }
 

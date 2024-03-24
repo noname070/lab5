@@ -1,6 +1,7 @@
 package ru.noname07.lab5.console.commands;
 
 import ru.noname07.lab5.App;
+import ru.noname07.lab5.collection.data.Organization;
 
 /**
  * Realisation for "clear" command
@@ -15,6 +16,7 @@ public class Clear extends Command {
     @Override
     public void execute() {
         App.collection.getData().clear();
+        Organization.setStartId(0);
         System.out.println(App.generalBundle.getString("command.clear.execute"));
     }
 

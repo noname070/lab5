@@ -16,15 +16,14 @@ import ru.noname07.lab5.console.Console;
 
 public class App {
 
-    public static Locale currentLocale = new Locale("ru_RU");
+    public static Locale currentLocale;
     public static String FILE_PATH;
     public static CollectionManager collection;
     public static String toScriptSave = "";
-    public static ResourceBundle generalBundle = ResourceBundle.getBundle("l18n/GeneralBundle", App.currentLocale);
+    public static ResourceBundle generalBundle;
+    public static Console console;
 
-    public static Console console = new Console();
     public static void main(String[] args) throws Exception {
-
         if (args.length == 1) {
             FILE_PATH = args[0];
         } else if (args.length == 2) {
@@ -35,8 +34,12 @@ public class App {
             currentLocale = new Locale("en_EN");
         }
 
+        generalBundle = ResourceBundle.getBundle("l18n/GeneralBundle", App.currentLocale);
+        console = new Console();
+
         collection = new CollectionManager();
         collection.loadData();
+
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(console.getInputStream());
 
