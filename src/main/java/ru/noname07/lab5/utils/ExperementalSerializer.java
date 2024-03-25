@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
 /**
- * ExperementalSerializer for LinkedList <-> xml
+ * ExperementalSerializer for LinkedList to/from xml  
  * @see Organization
  */
 public class ExperementalSerializer {
