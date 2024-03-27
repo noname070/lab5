@@ -1,7 +1,0 @@
-start_cache
-shpw
-show
-filter_greater_than_annual_turnover 0.2
-start_cache
-start_cache
- cd /Users/ihi/PROG/prog_lab5 ; /usr/bin/env /Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home/bin/java @/var/folders/9s/13gnpt8j4l98lnc5568wwxf00000gn/T/cp_2b7vltqar5c150famfdaghb5u.argfile ru.noname07.lab5.App 
