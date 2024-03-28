@@ -35,7 +35,7 @@ public class Filter {
                 float annualTurnover = Float.parseFloat(args[1]);
                 ArrayList<Organization> localData = new ArrayList<Organization>();
                 for (Organization o : App.collection.getData()) {
-                    if (!(o.getAnnualTurnover() == null)) {
+                    if (o.getAnnualTurnover() != null) {
                         if (o.getAnnualTurnover().equals(annualTurnover)) {
                             localData.add(o);
                         }

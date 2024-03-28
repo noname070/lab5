@@ -48,8 +48,7 @@ public class ExperementalSerializer {
      * @return rawData : record-ready string
      */
     public String serialize(LinkedList<Organization> data) {
-        String rawData = xstream.toXML(data);
-        return rawData;
+        return xstream.toXML(data);
     }
     
     /**

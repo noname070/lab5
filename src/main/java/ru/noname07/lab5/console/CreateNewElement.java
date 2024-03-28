@@ -68,6 +68,7 @@ public class CreateNewElement {
         Scanner localScanner = new Scanner(System.in);
 
         System.out.println(App.generalBundle.getString("create.organization.new_element"));
+        // ?
         while (!checker("create.organization.name", localScanner, org::setName,
                 name -> !name.equals(null) && StringUtils.isAlpha(name), name -> String.valueOf(name), null)) {
         }
@@ -195,7 +196,7 @@ public class CreateNewElement {
         while (true) {
             System.out.print(" annualTurnover>");
             input = localScanner.nextLine();
-            if (input.equals("")) {
+            if (input.isEmpty()) {
                 // org.setAnnualTurnover(null);
                 break;
             } else if (StringUtils.isNumeric(input.strip())) {
@@ -211,7 +212,7 @@ public class CreateNewElement {
         while (true) {
             System.out.print(" employeesCount>");
             input = localScanner.nextLine();
-            if (!input.equals("") & StringUtils.isNumeric(input)) {
+            if (!input.isEmpty() & StringUtils.isNumeric(input)) {
                 if (Integer.parseInt(input) <= 0) {
                     System.err.println(App.generalBundle.getString("create.err.value_greater_than_zero"));
                     continue;
@@ -261,6 +262,7 @@ public class CreateNewElement {
     }
 
     // DEV ONLY
+    //cringe
     public static Organization genRandom() {
         Organization org = new Organization();
         Random rnd = new Random();

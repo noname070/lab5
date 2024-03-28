@@ -19,11 +19,11 @@ public class Organization implements Valid, Comparable<Organization> {
 
     private static int nextId = 1;
 
-    private int id; // Значение поля должно быть больше 0, Значение этого поля должно быть
+    private final int id; // Значение поля должно быть больше 0, Значение этого поля должно быть
                     // уникальным, Значение этого поля должно генерироваться автоматически
     private String name; // Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; // Поле не может быть null
-    private java.time.LocalDate creationDate; // Поле не может быть null, Значение этого поля должно генерироваться
+    private final java.time.LocalDate creationDate; // Поле не может быть null, Значение этого поля должно генерироваться
                                               // автоматически
     private Float annualTurnover; // Поле может быть null, Значение поля должно быть больше 0
     private Integer employeesCount; // Значение поля должно быть больше 0
@@ -224,9 +224,7 @@ public class Organization implements Valid, Comparable<Organization> {
             if (this.annualTurnover < 0)
                 return false;
         }
-        if (this.type == null || !Arrays.asList(OrganizationType.values()).contains(this.type))
-            return false;
-        if (this.officialAddress == null || !this.officialAddress.isValid())
+        if (this.type == null || !Arrays.asList(OrganizationType.values()).contains(this.type) || this.officialAddress == null || !this.officialAddress.isValid())
             return false;
 
         return true;
@@ -234,7 +232,7 @@ public class Organization implements Valid, Comparable<Organization> {
 
     @Override
     public String toString() {
-        String output = String.format(
+        return String.format(
                 "`Organization` ID: %s; Name: %s; Coordinates: (%s, %s); CreationDate: %s, EmployeesCount: %s, AnnualTurnover: %s, OrganizationType: %s, Address: %s",
                 this.getId(),
                 this.getName(),
@@ -244,8 +242,6 @@ public class Organization implements Valid, Comparable<Organization> {
                 this.getAnnualTurnover(),
                 this.getOrganizationType(),
                 this.getAddress().getStreet());
-
-        return output;
     }
 
     public int compareTo(Organization org) {

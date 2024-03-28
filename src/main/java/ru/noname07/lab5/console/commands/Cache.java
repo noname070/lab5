@@ -48,7 +48,7 @@ public class Cache {
 
         @Override
         public void execute() {
-            if (!App.toScriptSave.equals("")) {
+            if (!App.toScriptSave.isEmpty()) {
                 App.toScriptSave = "";
                 System.out.println(App.generalBundle.getString("command.save_cache.execute") + App.toScriptSave);
             }
@@ -56,7 +56,7 @@ public class Cache {
 
         @Override
         public void execute(String[] args) {
-            if (!App.toScriptSave.equals("")) {
+            if (!App.toScriptSave.isEmpty()) {
                 if (StringUtils.isAlphanumeric(args[1])) {
                     try (BufferedInputStream bInputStream = new BufferedInputStream(new FileInputStream(App.toScriptSave)); BufferedOutputStream bOutputStream = new BufferedOutputStream(new FileOutputStream("resources/AppData/"+args[1]+".txt"))) {
                         byte[] bytes = bInputStream.readAllBytes();

@@ -79,7 +79,7 @@ public class Console {
     }
 
     /**
-     * get console installed pring stream
+     * get console installed print stream
      * 
      * @return console print stream
      */
@@ -148,7 +148,7 @@ public class Console {
                 }
             }
 
-            if (!App.toScriptSave.equals("")) {
+            if (!App.toScriptSave.isEmpty()) {
                 try {
                     IOManager.addToFile(App.toScriptSave, inputLine);
                 } catch (IOException e) {

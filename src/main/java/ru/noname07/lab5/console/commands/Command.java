@@ -11,8 +11,8 @@ import ru.noname07.lab5.App;
  * @see ICommand
  */
 public abstract class Command implements ICommand {
-    private String name;
-    private String description;
+    private final String name;
+    private final String description;
     private boolean needArgs = false;
 
     /**

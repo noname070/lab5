@@ -76,11 +76,8 @@ public class Coordinates implements Valid {
      */
     @Override
     public boolean isValid() {
-        if (this.x == null || this.x == 0)
+        if (this.x == null || this.x == 0 || this.y == 0 || this.y > 715)
             return false;
-        if (this.y == 0 || this.y > 715 || this.y == null)
-            return false;
-
         return true;
     }
 
