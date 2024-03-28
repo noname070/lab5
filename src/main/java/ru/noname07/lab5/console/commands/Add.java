@@ -34,7 +34,7 @@ public class Add extends Command {
         App.collection.getData().add(element);
         System.out.println("[DEV] gen random element to collection.");
         } else {
-            System.err.printf("You can`t use add with args\n");
+            System.err.print("You can`t use add with args\n");
         }
     }
 
